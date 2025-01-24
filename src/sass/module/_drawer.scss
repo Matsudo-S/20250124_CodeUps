@@ -1,0 +1,52 @@
+@use "global" as *;
+
+// 本体のスクロール制御用のクラス
+body.is-drawer-active {
+  overflow: hidden;
+  background-color: $main-accent-color;
+}
+
+.drawer-menu {
+  background-color: $main-accent-color;
+  display: none;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 4000;
+  overflow-y: auto;
+}
+
+.drawer-menu__inner {
+  align-items: center;
+  height: inherit;
+  width: 100%;
+  min-height: rem(600);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-menu__header {
+  width: rem(102);
+  margin-top: rem(21);
+  margin-left: rem(15);
+  align-self: flex-start;
+}
+
+
+.drawer-menu__header-logo {
+  aspect-ratio: 102 / 38;
+}
+
+.drawer-menu__lists {
+  margin-top: rem(104);
+  padding-bottom: rem(40);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(30);
+}
+
+.drawer__menu-list {
+  width: 100%;
+}

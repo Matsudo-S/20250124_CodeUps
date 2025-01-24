@@ -1,0 +1,8 @@
+@use "global" as *;
+
+.br {
+  display: block;
+  @include mq("md") {
+    display: inline;
+  }
+}

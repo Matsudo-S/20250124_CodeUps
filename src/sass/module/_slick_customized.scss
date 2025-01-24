@@ -1,0 +1,103 @@
+@use "global" as *;
+
+// defaultのslick_-theme.scssと
+// slick.scssを今回ようにカスタマイズしているscssファイル
+
+// -----------------------------------
+// カードの高さを文字が増えても揃える設定ここから
+// defaultだとheight: 100%;になっている
+.slick-slide {
+  height: auto;
+  margin: 0 rem(24);
+  @include mq("md") {
+    margin-right: rem(18);
+  }
+}
+
+// slick-trackのdisplayをflexにしているのは、
+// slick-slideの高さをそろえるため
+// defaultだとdisplay: block;になっている
+.slick-track {
+  display: flex;
+}
+// カードの高さを文字が増えても揃える設定ここまで
+// -----------------------------------
+
+
+// slick-arrow ここから
+// defaultのslick-arrowは全てコメントアウトしている
+.slick-arrow {
+  position: relative;
+}
+
+.slick-arrow::before{
+  content: "";
+  height: rem(6);
+  position: absolute;
+  width: rem(40);
+  top: rem(37);
+}
+
+.slick-prev.slick-arrow::before{
+  border-bottom: 1px solid $main-accent-color;
+  border-left: 1px solid $main-accent-color;
+  transform: skew(-47deg);
+  left: rem(21);
+}
+
+.slick-next.slick-arrow::before{
+  border-bottom: 1px solid $main-accent-color;
+  border-right: 1px solid $main-accent-color;
+  transform: skew(47deg);
+  right: rem(21);
+}
+
+.slick-next {
+  display: none;
+  @include mq("md") {
+    width: rem(80);
+    height: rem(80);
+    border: 1px solid $main-accent-color;
+    border-radius: 9999px;
+    position: absolute;
+    display: block;
+    margin: 0;
+    transition: 0.6s;
+    cursor: pointer;
+    top: rem(-106);
+    right: calc(23% - rem(110));
+  }
+}
+
+.slick-next:hover{
+  opacity: 0.7;
+}
+
+.slick-prev {
+  display: none;
+  @include mq("md") {
+    width: rem(80);
+    height: rem(80);
+    border: 1px solid $main-accent-color;
+    border-radius: 9999px;
+    position: absolute;
+    display: block;
+    margin: 0;
+    transition: 0.6s;
+    cursor: pointer;
+    top: rem(-106);
+    right: calc(34% - rem(90));
+  }
+}
+
+.slick-prev:hover{
+  opacity: 0.7;
+}
+
+// slick-arrow ここまで
+
+// これがないとスライダーカードの下が表示されないので
+// 記載
+.slick-list.draggable {
+  padding-bottom: rem(4);
+}

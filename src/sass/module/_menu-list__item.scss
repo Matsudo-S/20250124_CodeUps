@@ -1,0 +1,68 @@
+@use "global" as *;
+
+.menu-list__item {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: rem(24);
+  }
+}
+
+// PCとSP両方でマージンを0にする要素（キャンペーンとお客様の声）
+.footer__nav .footer__nav-left .menu-lists:first-child .menu-list__items .menu-list__item:first-child,
+.footer__nav .footer__nav-right .menu-lists:first-child .menu-list__items .menu-list__item:first-child {
+  margin-top: 0;
+}
+
+// PCのみでマージンを0にする要素（ダイビング情報とよくある質問）
+.footer__nav .footer__nav-left .menu-lists:nth-child(2) .menu-list__items .menu-list__item:first-child,
+.footer__nav .footer__nav-right .menu-lists:nth-child(2) .menu-list__items .menu-list__item:first-child {
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+
+// メインメニューのリンクスタイル
+.menu-list-main > a {
+  color: $white_pure;
+  font-weight: $bold;
+  font-size: rem(16);
+  line-height: 0.8;
+  position: relative;
+}
+
+// メインメニューのヒトデアイコン（サブメニューには適用しない）
+.menu-list-main > a::before {
+  background-image: url("../images/common/common_hitode.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: rem(18);
+  height: rem(18);
+  content: "";
+  position: absolute;
+  margin-left: rem(-24);
+}
+
+.menu-list-main a:hover {
+  opacity: 0.7;
+}
+
+// サブメニューのスタイル
+.menu-list-main__item {
+  font-weight: $regular;
+  margin-top: rem(18);
+  margin-left: rem(2);
+  @include mq("md") {
+    margin-top: rem(24);
+    margin-left: 0;
+  }
+}
+
+.menu-list-main__item a {
+  color: $white_pure;
+}
+
+.menu-list-main__item a:hover {
+  opacity: 0.7;
+}
+
+

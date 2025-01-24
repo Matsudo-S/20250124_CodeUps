@@ -1,0 +1,122 @@
+@use "global" as *;
+
+.cards {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: rem(40);
+  @include mq("md") {
+    row-gap: rem(40);
+    grid-template-rows: none;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: rem(40);
+  }
+}
+
+.card {
+  padding: rem(15) rem(16);
+  box-shadow: 4px 4px 10px 0px $off_white;
+  @include mq("md") {
+    padding: rem(24);
+  }
+}
+
+.card__header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: rem(13);
+  @include mq("md") {
+    column-gap: rem(16);
+  }
+}
+
+.card__header-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: rem(3);
+  @include mq("md") {
+    width: rem(276);
+    margin-top: rem(21);
+  }
+}
+
+.card__header-right img {
+  display: block;
+  aspect-ratio: 151 / 117;
+  object-fit: cover;
+  @include mq("md") {
+    aspect-ratio: 180 / 140;
+  } 
+}
+
+.card__body {
+  margin-top: rem(15);
+  @include mq("md") {
+    margin-top: rem(30);
+  }
+}
+
+.card__link:hover {
+  opacity: 0.7;
+}
+
+.card__label {
+  display: inline-block;
+  @include mq("md") {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.card__label-type {
+  display: flex;
+  align-items: end;
+  font-weight: $regular;
+  font-size: rem(12);
+  line-height: 1.5;
+}
+
+.card__label-license {
+  text-align: center;
+  width: fit-content;
+  font-weight: $regular;
+  font-size: rem(12);
+  line-height: 1.833;
+  color: $main-accent-color;
+  padding: rem(4) rem(12);
+  border: 1px solid $main-accent-color;
+  @include mq("md") {
+    padding: rem(6) rem(16);
+  }
+}
+
+.card__title {
+  color: $main-font-color;
+  font-size: rem(16);
+  font-weight: $medium;
+  line-height: 1.5;
+  margin-top: rem(4);
+  padding-bottom: rem(4);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
+  line-clamp: 3;
+  overflow: hidden;
+  @include mq("md") {
+    font-size: rem(24);
+    margin-bottom: rem(8);
+    margin-top: rem(8);
+  }
+}
+
+.card__text {
+  font-weight: $regular;
+  line-height: 1.5;
+  color: $main-font-color;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+}
+

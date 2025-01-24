@@ -1,0 +1,8 @@
+
+AuthUserFile "/home/xs986457/ourvoice-s.com/htpasswd/products/.htpasswd"
+AuthName "Member Site"
+AuthType BASIC
+require valid-user
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

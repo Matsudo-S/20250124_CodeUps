@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="robots" content="noindex,nofollow" />
+  <!-- meta情報 -->
+  <title>CodeUps</title>
+  <meta name="description" content="CodeUps" />
+  <meta name="keywords" content="CodeUps,ダイビング,沖縄" />
+  <!-- ogp -->
+  <meta property="og:title" content="CodeUps" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hogehogeo/index.html" />
+  <meta property="og:image" content="" />
+  <meta property="og:site_name" content="CodeUps" />
+  <meta property="og:description" content="CodeUps" />
+  <!-- ファビコン -->
+  <link rel="”icon”" href="./images/common/common_logo-green.svg" />
+  <!-- GoogleFont -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- ファーストビューの背景画像を先に読み込む -->
+  <link rel="preload" as="image" href="./images/top_mv_sp_01.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_sp_02.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_sp_03.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_sp_04.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_pc_01.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_pc_02.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_pc_03.jpg">
+  <link rel="preload" as="image" href="./images/top_mv_pc_04.jpg">
+  <!-- css -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script defer src="./assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+
+<body>
+  <div class="body__wrap">
+    <header class="header js-header">
+      <div class="header__inner">
+        <h1 class="header__name">
+          <a href="./index.html" class="header__logo">
+            <img src="./images/common/common_logo-white.svg" alt="CodeUps">
+          </a>
+        </h1>
+        <nav class="header__nav-main md-none">
+          <ul class="header__nav-main-items header__items">
+            <li class="header__nav-main-item header__item">
+              <a href="./about.html">about</a>
+            </li>
+            <li class="header__nav-main-item header__item">
+              <a href="./index.html#service">service</a>
+            </li>
+            <li class="header__nav-main-item header__item">
+              <a href="./index.html#news">news</a>
+            </li>
+          </ul>
+        </nav> <!-- End of header__nav-main -->
+        <nav class="header__nav-btn md-none">
+          <ul class="header__nav-btn__items">
+            <li class="header__nav-btn__item">
+              <a href="./contact.html" class="header__nav-button--link header-btn">contact</a>
+            </li>
+          </ul>
+        </nav> <!-- End of header__nav-btn -->
+  
+        <div class="hamburger js-hamburger md-show">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div> <!-- End of header__inner -->
+  
+      <nav class="drawer-menu js-drawer">
+        <div class="drawer-menu__inner">
+          <ul class="drawer-menu__items drawer-menu-main">
+            <li class="drawer-menu__item drawer-menu-main">
+              <a href="./campaign.html" class="drawer-menu-main__link">キャンペーン</a>
+              <ul class="drawer-menu-sub">
+                <li class="drawer-menu-sub__item"><a href="./campaign.html#license" class="drawer-menu-sub__link">ライセンス取得</a></li>
+                <li class="drawer-menu-sub__item"><a href="./campaign.html#private-diving" class="drawer-menu-sub__link">貸し切りダイビング</a></li>
+                <li class="drawer-menu-sub__item"><a href="./campaign.html#night-diving" class="drawer-menu-sub__link">ナイトダイビング</a></li>
+              </ul>
+            </li>
+            <li class="drawer-menu__item drawer-menu-main">
+              <a href="./about-us.html" class="drawer-menu-main__link">私たちについて</a>
+            </li>
+            <li class="drawer-menu__item drawer-menu-main"></li>
+              <a href="./infomation.html" class="drawer-menu-main__link">ダイビング情報</a>
+              <ul class="drawer-menu-sub">
+                <li class="drawer-menu-sub__item"><a href="./information.html#license" class="drawer-menu-sub__link">ライセンス取得</a></li>
+                <li class="drawer-menu-sub__item"><a href="./information.html#experience-diving" class="drawer-menu-sub__link">体験ダイビング</a></li>
+                <li class="drawer-menu-sub__item"><a href="./information.html#fun-diving" class="drawer-menu-sub__link">ファンダイビング</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="drawer__button">
+            <a href="./contact.html" class="header-btn">contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="mv" class="mv js-mv">
+        <div class="mv__inner">
+          <div class="mv__slider swiper">
+            <div class="swiper__wrapper">
+              <div class="swiper-slide">
+                <picture>
+                  <source srcset="./images/mv1.jpg" media="(max-width:767px)">
+                  <img src="./images/mv-pc1.jpg" alt="hoge" loading="lazy">
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source srcset="./images/mv2.jpg" media="(max-width:767px)">
+                  <img src="./images/mv-pc2.jpg" alt="hoge" loading="lazy">
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source srcset="./images/mv3.jpg" media="(max-width:767px)">
+                  <img src="./images/mv-pc3.jpg" alt="hoge" loading="lazy">
+                </picture>
+              </div>
+            </div>  
+            <!-- ページネーション -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev lg-none"></div>
+            <div class="swiper-button-next right lg-none"></div>
+          </div>
+          <div class="mv__title-content">
+            <h2 class="mv__title-main">DIVING</h2>
+            <p class="mv__title-sub">into&nbsp;the&nbsp;ocean</p>
+          </div>
+        </div>
+      </section>
+  
+      <!-- slider sample -->
+      <section class="test">
+      <div class="test__inner">
+        <div class="test__container">
+          <div class="swiper">
+            <div class="swiper__wrapper">
+              <div class="swiper__slide">
+                <img src="test" alt="test">
+              </div>
+              <div class="swiper__slide">
+                <img src="test" alt="test">
+              </div>
+              <div class="swiper__slide">
+                <img src="test" alt="test">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <!-- mohan cards -->
+      <div class="cards">
+        <article class="cards__item card">
+          <a href="">
+            <div class="card__img">
+              <img src="path" alt="test">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">test</h3>
+              <p class="card__text">説明文が入る</p>
+            </div>
+            <div class="card__meta">
+              <div class="card__category">カテゴリ</div>
+              <time datetime="2021-07-10" class="catd__date">日付</time>
+            </div>
+          </a>
+        </article>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+  </div>
+</body>
+
+</html>

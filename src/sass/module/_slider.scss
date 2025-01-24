@@ -1,0 +1,13 @@
+@use "global" as *;
+.slider {
+  position: relative;
+} 
+
+.slider img {
+  width:100%;/*スライダー内の画像を横幅100%に*/
+  object-fit: cover;
+  aspect-ratio: 280 / 188;
+  @include mq("md") {
+    aspect-ratio: 333 / 223;
+  }
+}

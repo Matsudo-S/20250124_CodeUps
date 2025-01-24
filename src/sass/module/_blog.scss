@@ -1,0 +1,132 @@
+@use "global" as *;
+
+.blog {
+  @include mq("md") {
+    background-image: url("../images/top_blog_pc.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-size: 100% 50%;
+    aspect-ratio: 1440 / 500;
+  }
+}
+
+.layout-blog {
+  padding-top: rem(80);
+  @include mq("md") {
+    padding-top: rem(100);
+  }
+}
+
+.blog__inner {
+  position: relative;
+}
+
+.blog__inner::before {
+  @include mq("md") {
+    content: "";
+    background-image: url("../images/common/common_fishes_white.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: rem(437);
+    aspect-ratio: 437 / 201;
+    position: absolute;
+    left: calc(50% - min(48vw, 38.5rem));
+    top: rem(-74);
+
+  }
+}
+
+.blog__cards {
+  margin-top: rem(24);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: rem(44.8);
+  margin: auto;
+  @include mq("md") {
+    margin-top: rem(80);
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: rem(40);
+    row-gap: rem(40);  
+  }
+}
+
+.blog-card {
+  background-color: $white_pure;
+  padding: rem(16) rem(17) rem(24);
+  box-shadow: 4px 4px 10px 0px $off_white;
+
+}
+.blog-card a:hover {
+  opacity: 0.7;
+}
+
+
+.blog-card__header {
+  display: block;
+}
+
+.blog-card__top {
+  margin-top: rem(14.4);
+  @include mq("md") {
+    margin-top: rem(27.5);
+  }
+  
+}
+
+.blog-card__title {
+  font-size: rem(16);
+  line-height: 1.5;
+  font-weight: $medium;
+  padding-bottom: rem(4);
+  @include mq("md") {
+    padding-bottom: rem(2);
+  }
+}
+
+.blog-card__img img {
+  aspect-ratio: 301 / 201;
+}
+
+.blog-card__label {
+  display: inline-block;
+  @include mq("md") {
+    display: flex;
+    justify-content: space-between;
+  }  
+}
+
+.blog-card__date {
+  font-size: rem(12);
+  line-height: 1.5;
+  font-family: $second-font-family;
+  font-weight: $regular;
+  color: $main-font-color;
+}
+
+.blog-card__body {
+  width: 95%;
+  margin-top: rem(16);
+  @include mq("md") {
+    width: 100%;
+  }
+}
+
+.blog-card__text {
+  font-weight: $regular;
+  line-height: 1.5;
+  color: $main-font-color;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+}
+
+.blog__btn {
+  margin-top: rem(47);
+  text-align: center;
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}

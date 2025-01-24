@@ -1,0 +1,20 @@
+@use "global" as *;
+
+.sns-icon {
+  width: rem(24);
+  @include mq("md") {
+    width: rem(32);
+  }
+}
+
+.sns-icon img {
+  width: 100%;
+  aspect-ratio: 24/24;
+  @include mq("md") {
+    aspect-ratio: 32/32;
+  }
+}
+
+.sns-icon:hover {
+  opacity: 0.7;
+}

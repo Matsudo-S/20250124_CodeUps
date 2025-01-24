@@ -1,0 +1,157 @@
+@use "global" as *;
+
+.fv {
+  height: 100vh;
+  width: 100%;
+  min-height: rem(600);
+}
+
+.fv__inner {
+  height: inherit;
+  position: relative;
+  width: 100%;
+}
+
+.fv__loading {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.fv__loading.is-fadeout {
+  opacity: 0;
+}
+
+.fv__loading-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: $white_pure;
+  overflow: hidden;
+}
+
+.fv__loading-image {
+  flex: 1;
+  background-size: cover;
+  transform: translateY(100%);
+  aspect-ratio: 187.5 / 667;
+  @include mq("md") {
+    aspect-ratio: 720 / 768;
+  }
+}
+
+.fv__loading-image--left {
+  background-image: url("../images/top_fv_sp_01.jpg");
+  background-position: left center;
+  background-size: 200% 100%;
+  @include mq(md){
+    background-image: url("../images/top_fv_pc_01.jpg");
+  }
+}
+
+.fv__loading-image--right {
+  background-image: url("../images/top_fv_sp_01.jpg");
+  background-position: right center;
+  background-size: 200% 100%;
+  @include mq(md){
+    background-image: url("../images/top_fv_pc_01.jpg");
+  }
+}
+
+// .fv__loading.js-fv-loading {
+//   display: none;
+// }
+
+// ok
+.fv__content {
+  color: $white_pure;
+  position: absolute;
+  text-align: center;
+  top: 49%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%,-50%);
+  transition: all 0.7s ease;
+  @include mq("md") {
+    top: 52%;
+  }
+}
+
+.fv__content-title {
+  font-family: $font-family-lato;
+  font-size: rem(40);
+  font-weight: $regular;
+  letter-spacing: .53em;
+  text-indent: .53em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  @include mq("md") {
+  font-size: rem(80);
+  line-height: 1.5;  
+  letter-spacing: .53em;
+  text-indent: .53em;
+  }
+}
+
+.fv__content-subtitle {
+  font-family: $second-font-family;
+  font-size: rem(20); 
+  font-weight: $normal;
+  letter-spacing: 0rem;
+  line-height: 1;
+  margin-right: rem(25);
+  @include mq("md") {
+    line-height: 1.5;
+    margin-top: rem(25);
+  }
+}
+
+// ok
+.fv__content.js-visible--loading {
+  transition: opacity 1s ease color 0.5s ease;
+  opacity: 1;
+  color: $main-accent-color;
+}
+
+.fv__content.js-visible {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+.fv__content.js-hidden {
+  opacity: 0;
+}
+
+.fv__slider {
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 1s ease;
+  
+}
+
+.fv__slider-img {
+  height: inherit;
+}
+
+.fv__slider .slick-slide {
+  height: 100vh;
+  margin: 0;
+}
+
+.fv__slider-img img,
+.fv__slider-img picture {
+  height: inherit;
+  object-fit: cover;
+}
+

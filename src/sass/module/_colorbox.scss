@@ -1,0 +1,25 @@
+@use "global" as *;
+
+.colorbox {
+  position: relative;
+}
+
+.colorbox img {
+  display: block;
+}
+
+.js-color {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+  background-color: $main-accent-color;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+
+}
+
+.js-color.fade-out {
+  opacity: 0;
+}
