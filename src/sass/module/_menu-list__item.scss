@@ -7,6 +7,10 @@
   }
 }
 
+.menu-list__item a:hover {
+  opacity: 0.7;
+}
+
 // PCとSP両方でマージンを0にする要素（キャンペーンとお客様の声）
 .footer__nav .footer__nav-left .menu-lists:first-child .menu-list__items .menu-list__item:first-child,
 .footer__nav .footer__nav-right .menu-lists:first-child .menu-list__items .menu-list__item:first-child {
@@ -22,7 +26,7 @@
 }
 
 // メインメニューのリンクスタイル
-.menu-list-main > a {
+.menu-list__item > a {
   color: $white_pure;
   font-weight: $bold;
   font-size: rem(16);
@@ -31,7 +35,7 @@
 }
 
 // メインメニューのヒトデアイコン（サブメニューには適用しない）
-.menu-list-main > a::before {
+.menu-list__item > a::before {
   background-image: url("../images/common/common_hitode.png");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -42,12 +46,9 @@
   margin-left: rem(-24);
 }
 
-.menu-list-main a:hover {
-  opacity: 0.7;
-}
 
 // サブメニューのスタイル
-.menu-list-main__item {
+.menu-list__item-sub {
   font-weight: $regular;
   margin-top: rem(18);
   margin-left: rem(2);
@@ -57,11 +58,11 @@
   }
 }
 
-.menu-list-main__item a {
+.menu-list__item-sub a {
   color: $white_pure;
 }
 
-.menu-list-main__item a:hover {
+.menu-list__item-sub a:hover {
   opacity: 0.7;
 }
 

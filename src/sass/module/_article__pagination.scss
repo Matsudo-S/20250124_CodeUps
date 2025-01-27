@@ -1,0 +1,78 @@
+@use "global" as *;
+
+.article-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-pagination__numbers {
+  display: flex;
+  gap: rem(16);
+  @include mq("md") {
+    gap: rem(12);
+  }
+}
+
+.article-pagination__number {
+  width: rem(40);
+  height: rem(40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $main-accent-color;
+  color: $main-accent-color;
+  font-size: rem(16);
+  font-weight: $regular;
+  transition: all .3s ease;
+  &:hover {
+      color: $white_pure;
+      background-color: $main-accent-color;
+  }
+}
+
+.article-pagination__prev,
+.article-pagination__next {
+  position: relative;
+  width: rem(38);
+  height: rem(38);
+  border: 1px solid $main-accent-color;
+  transition: all .3s ease;
+}
+
+.article-pagination__prev:hover,
+.article-pagination__next:hover {
+  background-color: $main-accent-color;
+}
+
+.article-pagination__prev:hover::before,
+.article-pagination__next:hover::before {
+  border-color: $white_pure;
+}
+
+.article-pagination__prev::before,
+.article-pagination__next::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: rem(14);
+  height: rem(14);
+  border-top: 1px solid $main-accent-color;
+  border-right: 1px solid $main-accent-color;
+  transition: all .3s ease;
+}
+
+.article-pagination__prev::before {
+  left: 40%;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.article-pagination__next::before {
+  right: 40%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.article-pagination__number:hover {
+  color: $white_pure;
+  background-color: $main-accent-color;
+}

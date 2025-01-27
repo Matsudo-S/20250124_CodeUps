@@ -1,0 +1,26 @@
+@use "global" as *;
+
+// breadcrumb
+.breadcrumb__items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: rem(8);
+}
+
+.breadcrumb__items li:not(:last-of-type)::after {
+  content: "›";
+  width: rem(4);
+  height: rem(8);
+  margin: 0 rem(8);
+  
+}
+
+.breadcrumb__item {
+  font-size: rem(14);
+  font-weight: $regular;
+  line-height: calc(17 / 14);
+}
+
+.breadcrumb__item a:hover {
+  opacity: 0.7;
+}

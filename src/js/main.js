@@ -298,3 +298,32 @@ function initLoadingCompletion() {
 // 関数の実行
 confirm_session_storage(); 
 });
+
+
+
+jQuery(function ($) {
+  // アーカイブアコーディオン
+  const archiveButtons = document.querySelectorAll('.js-archive-btn');
+  
+  archiveButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const targetId = button.getAttribute('aria-controls');
+      const targetContent = document.getElementById(targetId);
+      
+      // 現在のボタンの状態を切り替え
+      button.setAttribute('aria-expanded', !isExpanded);
+      targetContent.setAttribute('aria-hidden', isExpanded);
+      
+      // 他のすべてのアコーディオンを閉じる
+      archiveButtons.forEach(otherButton => {
+        if (otherButton !== button) {
+          const otherId = otherButton.getAttribute('aria-controls');
+          const otherContent = document.getElementById(otherId);
+          otherButton.setAttribute('aria-expanded', 'false');
+          otherContent.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
+  }); 
+});

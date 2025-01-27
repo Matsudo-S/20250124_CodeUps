@@ -39,7 +39,7 @@
 
 <body>
   <div class="body-wrap">
-    <header class="sub-campaign__header sub-page__header header js-header layout-header">
+    <header class="sub-blog__header sub-page__header header js-header layout-header">
       <div class="header__inner">
         <h1 class="header__logo">
           <a href="./index.html">
@@ -206,109 +206,224 @@
 
     <main class="main-wrap">
       <!-- blog-fv -->
-      <div class="sub-campaign-fv">
-        <div class="sub-campaign-fv__img">
-          <h1 class="sub-campaign-fv__title">campaign</h1>
+      <div class="sub-blog-fv">
+        <div class="sub-blog-fv__img">
+          <h1 class="sub-blog-fv__title">blog</h1>
         </div>
       </div>
       
       <nav class="breadcrumb">
         <ol class="breadcrumb__items inner">
           <li class="breadcrumb__item"><a href="./index.html">TOP</a></li>
-          <li class="breadcrumb__item"><a href="./campaign.html">キャンペーン</a></li>
+          <li class="breadcrumb__item"><a href="./blog.html">ブログ一覧</a></li>
+          <li class="breadcrumb__item"><a href="./blog__detail.html">ブログ詳細</a></li>
         </ol>
       </nav>
 
 
 
-      <!-- sub-campaign -->
-      <div id="sub-campaign" class="sub-campaign layout-sub-campaign">
-        <div class="sub-campaign__inner sub-page__inner inner">
+      <!-- sub-blog -->
+      <div id="sub-blog" class="sub-blog layout-sub-blog">
+        <div class="sub-blog__inner sub-page__innerinner">
+          <div class="sub-blog__detail sub-blog__contents">
+            <time class="sub-blog__date" datetime="2023-11-17">2023.11/17</time>
+            <div class="sub-blog__title underline--green">ライセンス取得</div>
 
-          <ul class="sub-campaign__tags">
-            <li class="sub-campaign__tag"><a href="#all">All</a></li>
-            <li class="sub-campaign__tag"><a href="#license">ライセンス取得</a></li>
-            <li class="sub-campaign__tag"><a href="#fun-diving">ファンダイビング</a></li>
-            <li class="sub-campaign__tag"><a href="#experience">体験ダイビング</a></li>
-          </ul>
-          <div class="sub-campaign__contents">
-            <ul class="sub-campaign__cards">
-              <li class="sub-campaign__card campaign-card">
-                <div class="campaign-card__img">
-                  <img src="./assets/images/campaign_sec_01.jpg" alt="水中にいるたくさんの魚たち">
-                </div>
-                <div class="campaign-card__content">
-                  <div class="campaign-card__title underline--green">ライセンス取得</div>
-                  <div class="campaign-card__text">全部コミコミ(お一人様)</div>
-                  <div class="campaign-card__price">
-                    <s class="campaign-card__price-disabled">¥56,000</s>
-                    <p class="campaign-card__price-current">¥46,000</p>
+            <div class="sub-blog__img">
+              <img src="./assets/images/blog_card_01.jpg" alt="ピンク色のサンゴの群生" loading="lazy">
+            </div>
+            <p class="sub-blog__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+            
+            <div class="sub-blog__img">
+              <img src="./assets/images/blog_card_01.jpg" alt="ピンク色のサンゴの群生" loading="lazy">
+            </div>
+            <p class="sub-blog__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+            <ul class="sub-blog__lists">       
+              <li class="sub-blog__list">リスト1</li>
+              <li class="sub-blog__list">リスト2</li>
+              <li class="sub-blog__list">リスト3</li>
+            </ul>
+            <p class="sub-blog__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+            
+            <div class="sub-blog__pagination">
+              <div class="article-pagination sub-blog__pagination--detail">
+                <a href="#" class="article-pagination__prev" aria-label="前のページへ"></a>
+                <a href="#" class="article-pagination__next" aria-label="次のページへ"></a>
+              </div>
+            </div>
+          </div> <!-- End of sub-blog__contents -->
+          
+          
+          <aside class="sub-blog__sidebar sidebar">
+            <ul class="sidebar__items">
+
+              <li class="sidebar__item">
+                <div class="sidebar__header">
+                  <div class="sidebar__img">
+                    <img src="./assets/images/common/common_kujira-black.svg" alt="CodeUps">
                   </div>
+                  <h2 class="sidebar__title">人気記事</h2>
                 </div>
-              </li>
-              <li class="sub-campaign__card campaign-card">            
-                <div class="campaign-card__img">
-                  <img src="./assets/images/campaign_sec_02.jpg" alt="浜辺から見える透き通った海">
-                </div>
-                <div class="campaign-card__content">
-                  <div class="campaign-card__category">体験ダイビング</div>
-                  <div class="campaign-card__title underline--green">貸切体験ダイビング</div>
-                  <div class="campaign-card__text">全部コミコミ(お一人様)</div>
-                  <div class="campaign-card__price">
-                    <s class="campaign-card__price-disabled">¥24,000</s>
-                    <p class="campaign-card__price-current">¥18,000</p>
+
+                <ul class="sidebar__contents">
+                  <li class="sidebar__content popular-list">
+                    <article class="popular-list__item">
+                      <a class="popular-list__link" href="#">
+                        <div class="popular-list__img">
+                          <img src="./assets/images/blog_card_04.jpg" alt="ライセンス取得の様子">
+                        </div>
+                        <div class="popular-list__content">
+                          <time class="popular-list__date" datetime="2023-11-17">2023.11/17</time>
+                          <h3 class="popular-list__title">ライセンス取得</h3>
+                        </div>
+                      </a>
+                    </article>
+                  </li>
+                  <li class="sidebar__content popular-list">
+                    <article class="popular-list__item">
+                      <a class="popular-list__link" href="#">
+                        <div class="popular-list__img">
+                          <img src="./assets/images/blog_card_02.jpg" alt="ウミガメと泳ぐ">
+                        </div>
+                        <div class="popular-list__content">
+                          <time class="popular-list__date" datetime="2023-11-17">2023.11/17</time>
+                          <h3 class="popular-list__title">ウミガメと泳ぐ</h3>
+                        </div>
+                      </a>
+                    </article>
+                  </li>
+                  <li class="sidebar__content popular-list">
+                    <article class="popular-list__item">
+                      <a class="popular-list__link" href="#">
+                        <div class="popular-list__img">
+                          <img src="./assets/images/blog_card_03.jpg" alt="カクレクマノミ">
+                        </div>
+                        <div class="popular-list__content">
+                          <time class="popular-list__date" datetime="2023-11-17">2023.11/17</time>
+                          <h3 class="popular-list__title">カクレクマノミ</h3>
+                        </div>
+                      </a>
+                    </article>
+                  </li>
+                </ul>
+              </li> <!-- End of sidebar__item -->
+
+              <li class="sidebar__item">
+                <div class="sidebar__header">
+                  <div class="sidebar__img">
+                    <img src="./assets/images/common/common_kujira-black.svg" alt="CodeUps">
                   </div>
+                  <h2 class="sidebar__title">口コミ</h2>
                 </div>
-              </li>
-  
-              <li class="sub-campaign__card campaign-card">
-                <div class="campaign-card__img">
-                  <img src="./assets/images/campaign_sec_03.jpg" alt="水中にいるたくさんのクラゲたち">
-                </div>
-                <div class="campaign-card__content">
-                  <div class="campaign-card__category">体験ダイビング</div>
-                  <div class="campaign-card__title underline--green">ナイトダイビング</div>
-                  <div class="campaign-card__text">全部コミコミ(お一人様)</div>
-                  <div class="campaign-card__price">
-                    <s class="campaign-card__price-disabled">¥10,000</s>
-                    <p class="campaign-card__price-current">¥8,000</p>
+                <ul class="sidebar__contents">
+                  <li class="sidebar__content review-list">
+                    <div class="review-list__img">
+                      <img src="./assets/images/blog_kuchikomi_01.jpg" alt="30代カップル">
+                    </div>
+
+                    <div class="review-list__tag">30代(カップル)</div>
+                    <div class="review-list__title">ここにタイトルが入ります。ここにタイトル</div>
+                    
+                    <div class="review-list__btn">
+                      <div class="btn">
+                        <a href="./blog.html">
+                          <span class="btn__text">View&nbsp;more</span>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li> <!-- End of sidebar__item -->
+
+              <li class="sidebar__item">
+                <div class="sidebar__header">
+                  <div class="sidebar__img">
+                    <img src="./assets/images/common/common_kujira-black.svg" alt="CodeUps">
                   </div>
+                  <h2 class="sidebar__title">キャンペーン</h2>
                 </div>
-              </li>
-  
-              <li class="sub-campaign__card campaign-card">
-                <div class="campaign-card__img">
-                  <img src="./assets/images/campaign_sec_04.jpg" alt="楽しんでいるダイバーの様子">
+
+                <ul class="sidebar__contents">
+                  <li class="sidebar__content campaign-card">
+                    <div class="campaign-card__img">
+                      <img src="./assets/images/campaign_sec_01.jpg" alt="水中にいるたくさんの魚たち">
+                    </div>
+                    <div class="campaign-card__content">
+                      <div class="campaign-card__title underline--green">ライセンス取得</div>
+                      <div class="campaign-card__text">全部コミコミ(お一人様)</div>
+                      <div class="campaign-card__price">
+                        <s class="campaign-card__price-disabled">¥56,000</s>
+                        <p class="campaign-card__price-current">¥46,000</p>
+                      </div>
+                    </div>
+                  </li>
+      
+                  <li class="sidebar__content campaign-card">            
+                    <div class="campaign-card__img">
+                      <img src="./assets/images/campaign_sec_02.jpg" alt="浜辺から見える透き通った海">
+                    </div>
+                    <div class="campaign-card__content">
+                      <div class="campaign-card__title underline--green">貸切体験ダイビング</div>
+                      <div class="campaign-card__text">全部コミコミ(お一人様)</div>
+                      <div class="campaign-card__price">
+                        <s class="campaign-card__price-disabled">¥24,000</s>
+                        <p class="campaign-card__price-current">¥18,000</p>
+                      </div>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </li> <!-- End of sidebar__item -->
+
+              <li class="sidebar__item">
+                <div class="sidebar__header">
+                  <div class="sidebar__img">
+                    <img src="./assets/images/common/common_kujira-black.svg" alt="CodeUps">
+                  </div>
+                  <h2 class="sidebar__title">アーカイブ</h2>
                 </div>
-                <div class="campaign-card__content">
-                  <div class="campaign-card__category">ファンダイビング</div>
-                  <div class="campaign-card__title underline--green">貸切ファンダイビング</div>
-                  <div class="campaign-card__text">全部コミコミ(お一人様)</div>
-                  <div class="campaign-card__price">
-                    <s class="campaign-card__price-disabled">¥20,000</s>
-                    <p class="campaign-card__price-current">¥16,000</p>
+
+                <div class="sidebar__contents">
+                  <div class="sidebar__content archive">
+                    <div class="archive__year">
+                      <button class="archive__year-btn js-archive-btn" aria-expanded="false" aria-controls="year-2023">
+                        <span class="archive__year-text">2023</span>
+                      </button>
+                      <div id="year-2023" class="archive__months" aria-hidden="true">
+                        <button class="archive__month-btn">
+                          <span class="archive__month-text">3月</span>
+                        </button>
+                        <button class="archive__month-btn">
+                          <span class="archive__month-text">2月</span>
+                        </button>
+                        <button class="archive__month-btn">
+                          <span class="archive__month-text">1月</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="archive__year">
+                      <button class="archive__year-btn js-archive-btn" aria-expanded="false" aria-controls="year-2022">
+                        <span class="archive__year-text">2022</span>
+                      </button>
+                      <div id="year-2022" class="archive__months" aria-hidden="true">
+                        <button class="archive__month-btn">
+                          <span class="archive__month-text">12月</span>
+                        </button>
+                        <button class="archive__month-btn">
+                          <span class="archive__month-text">11月</span>
+                        </button>
+                        <button class="archive__month-btn">
+                          <span class="archive__month-text">10月</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
             </ul>
-            <div class="sub-campaign__pagination">
-              <div class="article-pagination sub-campaign__pagination--main">
-                <a href="#" class="article-pagination__prev" aria-label="前のページへ"></a>
-                <div class="article-pagination__numbers">
-                  <a href="#" class="article-pagination__number">1</a>
-                  <a href="#" class="article-pagination__number">2</a>
-                  <a href="#" class="article-pagination__number">3</a>
-                  <a href="#" class="article-pagination__number">4</a>
-                  <a href="#" class="article-pagination__number">5</a>
-                  <a href="#" class="article-pagination__number">6</a>
-                </div>
-                <a href="#" class="article-pagination__next" aria-label="次のページへ"></a>
-              </div>
-            </div>
-          </div> <!-- End of sub-campaign__contents -->
-          
-        </div> <!-- End of sub-campaign__inner -->
-      </div> <!-- End of sub-campaign -->
+          </aside> <!-- End of sub-blog__sidebar -->
+        </div> <!-- End of sub-blog__inner -->
+      </div> <!-- End of sub-blog -->
   
 
 

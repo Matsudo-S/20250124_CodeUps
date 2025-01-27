@@ -66,7 +66,7 @@
   display: block;
 }
 
-.blog-card__top {
+.blog-card__meta {
   margin-top: rem(14.4);
   @include mq("md") {
     margin-top: rem(27.5);

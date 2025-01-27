@@ -15,7 +15,7 @@
 }
 
 
-.about-layout::before {
+.about__inner::before {
   @include mq(md){
     content: "";
     background-image: url("../images/common/common_sango.png");
@@ -25,7 +25,7 @@
     height: rem(181);
     position: absolute;
     right: calc(50% - min(48vw, 39rem));
-    bottom: rem(-154);
+    bottom: rem(-86);
   }
 }
 .about__contents {
@@ -35,26 +35,24 @@
   }
 }
 
-// pcの時だけabsoluteで配置
-.about__content {
-  margin-top: rem(41);
-  @include mq("md") {
-    margin-top: 0;
-    position: absolute;
-    display: flex;
-    gap: rem(40);
-    top: rem(305);
-    right: rem(66);
-  }
-}
-
-.about__img {
+.about-contents__imgs {
   position: relative;
   display: flex;
   aspect-ratio: 1080 / 660;
 }
 
-.about__img-background {
+.about-contents__img-forward {
+  position: absolute;
+  width: 37%;
+  aspect-ratio: 128 / 194;
+  object-fit: cover;
+  @include mq(md){
+    aspect-ratio: 400 / 606;
+    width: 37%;
+  }
+}
+
+.about-contents__img-background {
   width: 81.5%;
   aspect-ratio: 281 / 186;
   object-fit: cover;
@@ -67,18 +65,20 @@
   }
 }
 
-.about__img-forward {
-  position: absolute;
-  width: 37%;
-  aspect-ratio: 128 / 194;
-  object-fit: cover;
-  @include mq(md){
-    aspect-ratio: 400 / 606;
-    width: 37%;
+// pcの時だけabsoluteで配置
+.about-contents__body {
+  margin-top: rem(41);
+  @include mq("md") {
+    margin-top: 0;
+    position: absolute;
+    display: flex;
+    gap: rem(40);
+    top: rem(305);
+    right: rem(66);
   }
 }
 
-.about__header {
+.about-contents__header {
   font-size: rem(40);
   font-family: $second-font-family;
   font-weight: $regular;
@@ -91,11 +91,11 @@
   }
 }
 
-.about__header p:nth-child(1)::first-letter {
+.about-contents__header p:nth-child(1)::first-letter {
   text-transform: uppercase;
 }
 
-.about__body {
+.about-contents__content {
   margin-top:  rem(21);
   @include mq("md") {
     margin-top:  0;
@@ -104,14 +104,14 @@
 }
 
 
-.about__text {
+.about-contents__text {
   line-height: 1.5;
   @include mq(md){
     color: $white_pure;
   }
 }
 
-.about__btn {
+.about-contents__btn {
   margin-top: rem(24.8);
   text-align: center;
   @include mq("md") {

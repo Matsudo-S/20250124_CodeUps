@@ -2,11 +2,11 @@
 
 // sub-blogページのクラス
 
-.blog-fv {
+.sub-blog-fv {
   width: 100%;
 }
 
-.blog-fv__img {
+.sub-blog-fv__img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
   }
 }
 
-.blog-fv__title {
+.sub-blog-fv__title {
   font-family: $font-family-lato;
   color: $white_pure;
   font-size: rem(40);
@@ -33,37 +33,9 @@
   }
 }
 
-.blog-fv__title::first-letter {
+.sub-blog-fv__title::first-letter {
   text-transform: uppercase;
 }
-
-// breadcrumb
-.breadcrumb__items {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: rem(8);
-}
-
-.breadcrumb__items li:not(:last-of-type)::after {
-  content: "›";
-  width: rem(4);
-  height: rem(8);
-  margin: 0 rem(8);
-  
-}
-
-.breadcrumb__item {
-  font-size: rem(14);
-  font-weight: $regular;
-  line-height: calc(17 / 14);
-}
-
-.breadcrumb__item a:hover {
-  opacity: 0.7;
-}
-
-// -------------------------------------
-
 
 // 以下sub-blogクラス
 .layout-sub-blog {
@@ -74,26 +46,8 @@
 }
 
 .sub-blog__inner {
-  position: relative;
-  max-width: rem(333);
   @include mq(md){
-      max-width: rem(1080);
       display: flex;
-  }
-}
-
-.sub-blog__inner::before {
-  @include mq("md") {
-    content: "";
-    background-image: url("../images/common/common_fishes_right.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: rem(301);
-    aspect-ratio: 301 / 138;
-    position: absolute;
-    left: calc(50% - min(43vw, 37.1rem));
-    top: rem(-73);
-    z-index: -1;
   }
 }
 
@@ -208,70 +162,16 @@
   }
 }
 
-.sub-blog__pagination {
+.sub-blog__pagination--main {
   margin-top: rem(80);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: rem(16);
-  @include mq("md") {
-    gap: rem(12);
-  }
+  gap: rem(40);
 }
 
-.sub-blog__pagination-item {
-  width: rem(40);
-  height: rem(40);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid $main-accent-color;
-  color: $main-accent-color;
-  font-size: rem(16);
-  font-weight: $regular;
-  transition: all .3s ease;
-  &:hover {
-      color: $white_pure;
-      background-color: $main-accent-color;
-  }
+.sub-blog__pagination--detail {
+  margin-top: rem(80);
+  gap: rem(82);
 }
 
-.sub-blog__pagination-prev,
-.sub-blog__pagination-next {
-  position: relative;
-  width: rem(38);
-  height: rem(38);
-  border: 1px solid $main-accent-color;
-  transition: all .3s ease;
-  &:hover {
-      background-color: $main-accent-color;
-      &::before {
-          border-color: $white_pure;
-      }
-  }
-}
-
-.sub-blog__pagination-prev::before,
-.sub-blog__pagination-next::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: rem(14);
-  height: rem(14);
-  border-top: 1px solid $main-accent-color;
-  border-right: 1px solid $main-accent-color;
-  transition: all .3s ease;
-}
-
-.sub-blog__pagination-prev::before {
-  left: 40%;
-  transform: translateY(-50%) rotate(-135deg);
-}
-
-.sub-blog__pagination-next::before {
-  right: 40%;
-  transform: translateY(-50%) rotate(45deg);
-}
 // -------------------------------------
 
 // 以下sidebar 別ページにする予定
@@ -284,30 +184,27 @@
     }
 }
 
+.sidebar__header {
+  display: inline-flex;
+  align-items: center;
+  border-left: rem(8) solid $main-accent-color;
+}
+
 .sidebar__title {
   position: relative;
   padding-top: rem(7.5);
   padding-bottom: rem(7.5);
-  padding-left: rem(74);
+  padding-left: rem(8);
   font-size: rem(24);
   font-weight: $regular;
   line-height: calc(29 / 24);
-  border-left: rem(8) solid $main-accent-color;
 }
 
-.sidebar__title::before {
-    content: "";
-    background-image: url("../images/common/common_kujira-black.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: rem(50);
-    aspect-ratio: 50 / 50;
-    position: absolute;
-    z-index: -1;
-    top: rem(-2);
+.sidebar__img {
+  width: rem(50);
+  aspect-ratio: 50 / 50;
+  margin-left: rem(16);
 }
-
-
 
 .sub-blog__sidebar-item {
     // padding-top: rem(24);
@@ -316,71 +213,10 @@
 }
 
 .sidebar__item + .sidebar__item {
-    margin-top: rem(64);
+    margin-top: rem(80);
 }
 
 
-.sub-blog__ranking-link {
-    padding: rem(24) 0;
-    display: flex;
-    border-bottom: 1px solid rgba($color: #234F5E, $alpha: .2);
-}
-
-.sub-blog__ranking-title {
-    flex-grow: 1;
-    font-size: rem(14);
-    font-weight: 700;
-    line-height: 1.3;
-}
-
-.sub-blog__ranking-img-wrap {
-    margin-left: rem(16);
-    position: relative;
-    max-width: rem(64);
-    width: 100%;
-    flex-shrink: 0;
-}
-
-.sub-blog__ranking-img {
-    width: 100%;
-}
-
-.sub-blog__ranking-img img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-}
-
-.sub-blog__ranking-number {
-    position: absolute;
-    top: rem(-15);
-    right: rem(-8);
-    width: rem(24);
-    height: rem(24);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: rem(14);
-    line-height: 1;
-    color: #fff;
-    border-radius: 50%;
-}
-
-.sub-blog__ranking-item:nth-of-type(1) .sub-blog__ranking-number {
-    background-color: #52BCDE;
-}
-
-.sub-blog__ranking-item:nth-of-type(2) .sub-blog__ranking-number {
-    background-color: #73B2A0;
-}
-
-.sub-blog__ranking-item:nth-of-type(3) .sub-blog__ranking-number {
-    background-color: #A4B4B9;
-}
-
-.sub-blog__ranking-item:nth-of-type(4) .sub-blog__ranking-number {
-    background-color: #5C7279;
-}
 
 .sub-blog__category-link {
     padding: rem(24) rem(30) rem(24) 0;
@@ -416,11 +252,16 @@
     line-height: 1;
 }
 
-.sidebar__list {
+.sidebar__contents {
   margin-top: rem(24);
 }
 
-.popular-lists__list + .popular-lists__list {
+// 人気記事
+.popular-list {
+  width: rem(294);
+}
+
+.popular-list + .popular-list {
   margin-top: rem(24);
 }
 
@@ -428,45 +269,223 @@
   display: block;
   padding: rem(16);
   background-color: $white_pure;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
-  transition: opacity 0.3s;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   gap: rem(16);
-  &:hover {
-    opacity: 0.7;
-  }
+}
+
+.popular-list__link:hover {
+  opacity: 0.7;
 }
 
 .popular-list__img {
   position: relative;
   width: rem(100);
   flex-shrink: 0;
-  img {
-    aspect-ratio: 1/1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+}
+
+.popular-list__img img {
+  width: rem(121);
+  aspect-ratio: 121/ 91;
+  object-fit: cover;
 }
 
 .popular-list__content {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .popular-list__date {
   display: inline-block;
   font-size: rem(12);
-  line-height: 1.5;
+  line-height: calc(18/ 12);
   font-family: $second-font-family;
   font-weight: $regular;
   color: $main-font-color;
 }
 
 .popular-list__title {
-  margin-top: rem(4);
+  margin-top: rem(8);
   font-size: rem(16);
   font-weight: $medium;
-  line-height: 1.5;
-  padding-bottom: rem(4);
+  line-height: calc(19 / 16);
 }
 
+// --------------------------------
+
+// review-list
+.review-list__img {
+  width: 100%;
+}
+
+.review-list__img img{
+  width: rem(294);
+  aspect-ratio: 294 / 218;
+  object-fit: cover;
+}
+
+.review-list__tag {
+  margin-top: rem(16);
+  font-size: rem(12);
+  line-height: calc(18 / 12);
+  font-weight: $regular;
+}
+
+.review-list__title {
+  margin-top: rem(8);
+  font-size: rem(24);
+  line-height: calc(29 / 24);
+  font-weight: $medium;
+}
+
+.review-list__btn {
+  margin-top: rem(40);
+  text-align: center;
+  @include mq("md") {
+    margin-top: rem(56);
+  }
+}
+
+//-----------------------
+
+
+
+// campaign
+.sidebar__contents .campaign-card {
+  width: rem(294);
+  margin-top: rem(40);
+}
+
+.sidebar__content .campaign-card__title {
+  display: block;
+  text-align: center;
+}
+
+
+
+.sidebar__content .campaign-card__img img {
+  aspect-ratio: 294 / 218;
+  object-fit: cover;
+}
+
+.sidebar__content .campaign-card__price {
+  gap: rem(16)
+}
+
+// archive
+.archive__year-btn,
+.archive__month-btn {
+  margin-top: rem(4);
+}
+
+.archive__year-btn {
+  position: relative;
+  width: 100%;
+  padding: rem(0) rem(16) rem(0) rem(32);
+  text-align: left;
+  font-size: rem(16);
+  line-height: 1.5;
+  cursor: pointer;
+  color: $main-accent-color;
+}
+
+.archive__year-btn:hover {
+  opacity: 0.7;
+}
+
+.archive__year-btn::before {
+  content: "▶︎";
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  transform: translateY(-50%);
+  font-size: rem(24);
+  transition: transform .3s;
+  color: $main-accent-color;
+}
+
+.archive__year-btn[aria-expanded="true"]::before {
+  content: "▼";
+}
+
+.archive__months {
+  display: none;
+  padding-left: rem(32);
+  margin-bottom: rem(16);
+}
+
+.archive__months[aria-hidden="false"] {
+  display: block;
+}
+
+.archive__month-btn {
+  position: relative;
+  width: 100%;
+  padding: rem(8) rem(0) rem(8) rem(32);
+  text-align: left;
+  font-size: rem(14);
+  line-height: 1.5;
+  cursor: pointer;
+  color: $main-accent-color;
+}
+
+.archive__month-btn:hover {
+  opacity: 0.7;
+}
+
+.archive__month-btn::before {
+  content: "▶︎";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: rem(24);
+  color: $main-accent-color;
+}
+
+// ブログ詳細
+.sub-blog__title {
+  font-size: rem(32);
+  line-height: calc(29 / 24);
+  font-weight: $medium;
+  @include mq("md") {
+    line-height: calc(38 / 32);
+  }
+}
+
+.sub-blog__img,
+.sub-blog__text,
+.sub-blog__lists {
+  margin-top: rem(24);
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.sub-blog__list {
+  line-height: calc(24 / 16);
+}
+
+.sub-blog__list {
+  position: relative;
+  padding-left: rem(27);
+  font-size: rem(16);
+  line-height: calc(24 / 16);
+  margin-top: rem(4);
+}
+
+.sub-blog__list::before  {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  transform: translateY(-50%);
+  width: rem(18);
+  height: rem(18);
+  background-image: url("../images/common/common_hitode_green.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

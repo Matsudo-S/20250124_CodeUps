@@ -1,0 +1,95 @@
+@use "global" as *;
+
+// sub-aboutページのクラス
+
+.sub-about-fv {
+  width: 100%;
+}
+
+.sub-about-fv__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-image: url("../images/about_fv_sp.jpg");
+  aspect-ratio: 375 / 460;
+  background-size: contain;
+  @include mq("md") {
+    background-image: url("../images/about_fv_pc.jpg");
+    aspect-ratio: 1440 / 548;
+  }
+}
+
+.sub-about-fv__title {
+  font-family: $font-family-lato;
+  color: $white_pure;
+  font-size: rem(40);
+  font-weight: $regular;
+  line-height: calc(48 / 40); 
+  @include mq("md") {
+    font-size: rem(80);
+    line-height: calc(100 / 80);
+    
+  }
+}
+
+.sub-about-fv__title::first-letter {
+  text-transform: uppercase;
+}
+
+.layout-sub-about {
+  margin-top: rem(52);
+  @include mq("md") {
+    margin-top: rem(150);
+  }
+}
+
+.sub-about__contents .about-contents__body {
+  top: rem(192);
+}
+
+.sub-about__contents .about-contents__content {
+  margin-top: rem(24);
+}
+
+.sub-about__contents .about-contents__imgs {
+  display: none;
+  @include mq("md") {
+    display: flex;
+  }
+}
+
+// .sub-about__contents .about-contents__img-forward {
+//   display: none;
+//   @include mq(md){
+//     display: flex;
+//     aspect-ratio: 400 / 606;
+//     width: 37%;
+//   }
+// }
+
+// .sub-about__contents .about-contents__img-background {
+//   width: 100%;
+//   aspect-ratio: 345 / 228;
+//   z-index: 0;
+
+//   @include mq(md){
+//     width: 81.5%;
+//     aspect-ratio: 880 / 581;
+//     z-index: -1;
+//   }
+// }
+
+.sub-about__contents .about-contents__header {
+  background-image: url("../images/common/common_dive-into-ocean-02.jpg");
+  width: 100%;
+  aspect-ratio: 345 / 228;
+  object-fit: cover;
+  @include mq("md") {
+    background-image: none;
+  }
+}
+
+.sub-about__contents .about-contents__header {
+  color: $white-pure;
+}
