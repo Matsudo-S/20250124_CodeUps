@@ -145,6 +145,52 @@
   }
 }
 
+.campaign-card__context {
+  display: none;
+  @include mq(md){
+    display: block;
+    margin-top: rem(40);
+    font-size: rem(16);
+    line-height: calc(24 / 16);
+  }
+}
+
+.campaign-card__date {
+  display: none;
+  @include mq(md){
+    display: block;
+    margin-top: rem(32);
+    font-size: rem(16);
+    line-height: calc(18 / 16);
+    font-family: $font-family-lato;
+    font-weight: $bold;
+    color: $main-accent-color;
+    text-align: center; 
+  }
+}
+
+.campaign-card__contact {
+  display: none;
+  @include mq(md){
+    display: block;
+    text-align: center;
+    color: $main-accent-color;
+    margin-top: rem(7);
+    font-size: rem(14);
+    line-height: calc(18 / 16);
+  }
+}
+
+.campaign-card__btn {
+  display: none;
+  @include mq("md") {
+    display: block;
+    text-align: center;
+    margin-top: rem(16);
+  }
+}
+
+
 .campaign__btn {
   margin-top: rem(40);
   text-align: center;

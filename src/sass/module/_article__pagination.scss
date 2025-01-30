@@ -4,14 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: rem(40);
 }
 
 .article-pagination__numbers {
   display: flex;
-  gap: rem(16);
-  @include mq("md") {
-    gap: rem(12);
-  }
+  gap: rem(12);
 }
 
 .article-pagination__number {
@@ -25,10 +23,20 @@
   font-size: rem(16);
   font-weight: $regular;
   transition: all .3s ease;
-  &:hover {
-      color: $white_pure;
-      background-color: $main-accent-color;
+}
+
+.article-pagination__number:hover {
+  color: $white_pure;
+  background-color: $main-accent-color;
+}
+
+.article-pagination__number:nth-child(5),
+.article-pagination__number:nth-child(6) {
+  display: none;
+  @include mq("md") {
+    display: flex;
   }
+  
 }
 
 .article-pagination__prev,

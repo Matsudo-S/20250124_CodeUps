@@ -57,15 +57,11 @@
     }
 }
 
-.sub-blog__cards {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    row-gap: rem(40);
-    @include mq(md) {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: rem(40);
-        row-gap: rem(80);
-    }
+.sub-blog__cards-grid.blog-cards{
+  grid-template-columns: repeat(1, 1fr);
+  @include mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .sub-blog__card {
@@ -258,7 +254,7 @@
 
 // 人気記事
 .popular-list {
-  width: rem(294);
+  width: 100%;
 }
 
 .popular-list + .popular-list {
@@ -354,7 +350,7 @@
 
 // campaign
 .sidebar__contents .campaign-card {
-  width: rem(294);
+  width: 100%;
   margin-top: rem(40);
 }
 

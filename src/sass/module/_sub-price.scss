@@ -1,0 +1,158 @@
+@use "global" as *;
+
+// sub-priceページのクラス
+
+.sub-price-fv {
+  width: 100%;
+}
+
+.sub-price-fv__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-image: url("../images/price_fv_sp.jpg");
+  aspect-ratio: 375 / 460;
+  background-size: contain;
+  @include mq("md") {
+    background-image: url("../images/price_fv_pc.jpg");
+    aspect-ratio: 1440 / 548;
+  }
+}
+
+.sub-price-fv__title {
+  font-family: $font-family-lato;
+  color: $white_pure;
+  font-size: rem(40);
+  font-weight: $regular;
+  line-height: calc(48 / 40); 
+  @include mq("md") {
+    font-size: rem(80);
+    line-height: calc(100 / 80);
+    
+  }
+}
+
+.sub-price-fv__title::first-letter {
+  text-transform: uppercase;
+}
+
+// 以下sub-priceクラス
+.layout-sub-price {
+  margin-top: rem(52);
+  @include mq("md") {
+    margin-top: rem(150);
+  }
+}
+
+.sub-price__lists {
+  width: 100%;
+  @include mq("md") {
+    max-width: rem(700);
+    margin-inline: auto;
+  }
+}
+
+.sub-price__lists .price-list {
+  display: block;
+  @include mq("md") {
+    display: flex;
+    // gap: rem(32);
+  }
+}
+
+.sub-price__lists .price-list__category {
+  color: $white_pure;
+}
+
+.price-list__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  background-color: $main-accent-color;
+  color: $white_pure;
+  width: 100%;
+  gap: rem(8);
+  min-height: rem(40);
+  height: auto;
+  padding-left: rem(16);
+  @include mq("md") {
+    flex-direction: column;
+    width: calc(rem(200) / rem(700) * 100%);
+    padding-left: 0;
+  }
+}
+
+.price-list__img {
+  display: flex;
+  align-items: center;
+  @include mq("md") {
+    justify-content: center;
+  }
+}
+
+.price-list__img img{
+  width: rem(24);
+  aspect-ratio: 24 / 24;
+  @include mq("md") {
+    width: rem(64);
+    aspect-ratio: 64 / 64;
+  }
+}
+
+.sub-price__lists .price-list__items {
+  flex: 1;
+  height: inherit;
+  @include mq("md") {
+    margin-top: 0;
+    width: calc(rem(500) / rem(700) * 100%);
+  }
+}
+
+.sub-price__lists .price-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: rem(64);
+  margin-top: rem(0);
+  border: 1px solid $main-accent-color;
+  position: relative;
+  @include mq("md") {
+    height: rem(60);
+  }
+}
+
+.sub-price__lists .price-list__item:not(:first-child) {
+  border-top: none;
+}
+
+.sub-price__lists .price-list__item::after {
+  content: "";
+  position: absolute;
+  right: calc(rem(105) / rem(345) * 100%);
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: $main-accent-color;
+}
+
+.sub-price__lists .price-list__name {
+  width: calc(rem(240) / rem(345) * 100%);
+  text-align: center;
+  @include mq("md") {
+    text-align: left;
+    padding-left: rem(16);
+    width: calc(rem(340) / rem(500) * 100%);
+  }
+}
+
+.sub-price__lists .price-list__price {
+  width: calc(rem(105) / rem(345) * 100%);
+  text-align: right;
+  padding-right: rem(16);
+  @include mq("md") {
+    width: calc(rem(160) / rem(500) * 100%);
+  }
+}
+

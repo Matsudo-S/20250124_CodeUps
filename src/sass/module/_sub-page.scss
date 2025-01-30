@@ -1,12 +1,13 @@
 @use "global" as *;
 
 // sub-blogページのクラス
+// 下層ページ共通のクラス
 .sub-page__inner {
   position: relative;
-  max-width: rem(375);
-  @include mq(md){
-      max-width: rem(1130);
-  }
+  // min-width: rem(375);
+  // @include mq(md){
+  //     max-width: rem(1130);
+  // }
 }
 
 .sub-page__inner::before {
@@ -25,5 +26,12 @@
     width: rem(301);
     aspect-ratio: 301 / 138;
     left: calc(50% - min(48vw, 38.1rem));
+  }
+}
+
+.sub-page-contact.layout-contact {
+  margin-top: rem(80);
+  @include mq("md") {
+    margin-top: rem(100);
   }
 }

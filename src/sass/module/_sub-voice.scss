@@ -1,26 +1,26 @@
 @use "global" as *;
 
-// sub-campaignページのクラス
+// sub-voiceページのクラス
 
-.sub-campaign-fv {
+.sub-voice-fv {
   width: 100%;
 }
 
-.sub-campaign-fv__img {
+.sub-voice-fv__img {
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  background-image: url("../images/campaign_fv_sp.jpg");
+  background-image: url("../images/voice_fv_sp.jpg");
   aspect-ratio: 375 / 460;
   background-size: contain;
   @include mq("md") {
-    background-image: url("../images/campaign_fv_pc.jpg");
+    background-image: url("../images/voice_fv_pc.jpg");
     aspect-ratio: 1440 / 548;
   }
 }
 
-.sub-campaign-fv__title {
+.sub-voice-fv__title {
   font-family: $font-family-lato;
   color: $white_pure;
   font-size: rem(40);
@@ -33,19 +33,19 @@
   }
 }
 
-.sub-campaign-fv__title::first-letter {
+.sub-voice-fv__title::first-letter {
   text-transform: uppercase;
 }
 
-// 以下sub-campaignクラス
-.layout-sub-campaign {
+// 以下sub-voiceクラス
+.layout-sub-voice {
   margin-top: rem(52);
   @include mq("md") {
     margin-top: rem(150);
   }
 }
 
-.sub-campaign__tags {
+.sub-voice__tags {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: rem(16);
@@ -57,14 +57,14 @@
   }
 }
 
-.sub-campaign__tag {
+.sub-voice__tag {
   @include mq("md") {
     width: rem(162);
     
   }
 }
 
-.sub-campaign__tag a {
+.sub-voice__tag a {
   display: block;
   padding: rem(4) rem(16);
   border: 1px solid $main-accent-color;
@@ -76,17 +76,18 @@
   cursor: pointer;
 }
 
-.sub-campaign__tag a:hover,
-.sub-campaign__tag .is-active {
+.sub-voice__tag a:hover,
+.sub-voice__tag .is-active {
   color: $white_pure;
   background-color: $main-accent-color;
 }
 
-.sub-campaign__cards {
+
+.sub-voice__cards {
   margin-top: rem(40);
 }
 
-.sub-campaign__cards-grid.campaign-cards{
+.sub-voice__cards-grid.campaign-cards{
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   row-gap: rem(40);
@@ -98,7 +99,7 @@
 }
 
 
-.sub-campaign__cards-grid .campaign-card {
+.sub-voice__cards-grid .campaign-card {
   min-width: rem(294);
   width: 100%;
   @include mq("md") {
@@ -106,18 +107,9 @@
   }
 }
 
-.sub-campaign__pagination--main {
+.sub-voice__pagination {
   margin-top: rem(80);
-}
-
-.article-pagination__number {
-  transition: all .3s ease;
-  
-  &.is-active {
-    background-color: $main-accent-color;
-    color: $white_pure;
-    pointer-events: none;
+  @include mq("md") {
+    margin-top: rem(72);
   }
 }
-
-

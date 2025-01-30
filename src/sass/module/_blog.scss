@@ -39,15 +39,19 @@
 
 .blog__cards {
   margin-top: rem(24);
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  row-gap: rem(44.8);
   margin: auto;
   @include mq("md") {
     margin-top: rem(80);
+  }
+}
+
+.blog-cards {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: rem(40);
+  @include mq("md") {
     grid-template-columns: repeat(3, 1fr);
-    column-gap: rem(40);
-    row-gap: rem(40);  
+    column-gap: rem(40);  
   }
 }
 

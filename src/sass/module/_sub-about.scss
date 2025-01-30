@@ -59,29 +59,10 @@
   }
 }
 
-// .sub-about__contents .about-contents__img-forward {
-//   display: none;
-//   @include mq(md){
-//     display: flex;
-//     aspect-ratio: 400 / 606;
-//     width: 37%;
-//   }
-// }
-
-// .sub-about__contents .about-contents__img-background {
-//   width: 100%;
-//   aspect-ratio: 345 / 228;
-//   z-index: 0;
-
-//   @include mq(md){
-//     width: 81.5%;
-//     aspect-ratio: 880 / 581;
-//     z-index: -1;
-//   }
-// }
-
 .sub-about__contents .about-contents__header {
   background-image: url("../images/common/common_dive-into-ocean-02.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
   width: 100%;
   aspect-ratio: 345 / 228;
   object-fit: cover;
@@ -92,4 +73,144 @@
 
 .sub-about__contents .about-contents__header {
   color: $white-pure;
+  padding-top: rem(24);
+  padding-left: rem(24);
+  @include mq("md") {
+    padding: 0;
+  }
 }
+
+.sub-about__contents .about-contents__content {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top:  0;
+  }
+}
+
+.layout-sub-about__gallery {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top:  rem(120);
+  }
+}
+
+.sub-about__galleries {
+  margin-top: rem(40);  
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
+
+.galleries {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: rem(8);
+  @include mq("md") {
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-flow: dense;
+  }
+}
+
+.galleries {
+  width: 100%;
+  @include mq("md") {
+    min-width: rem(1130);
+  }
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.gallery:nth-child(7n+1) {
+  @include mq("md") {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+}
+.gallery:nth-child(7n+2),
+.gallery:nth-child(7n+3) {
+  @include mq("md") {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+}
+
+.gallery:nth-child(7n+4),
+.gallery:nth-child(7n+5) {
+  @include mq("md") {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+}
+
+.gallery:nth-child(7n+6) {
+  @include mq("md") {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+}
+
+/* モーダルと背景の指定 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  box-sizing: border-box;
+  z-index: 9999;
+  padding: rem(40) rem(20);
+  cursor: pointer;
+}
+
+/* クラスが追加された時の指定 */
+.modal.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* モーダル内側の指定 */
+.modal-container {
+  position: relative;
+  max-width: rem(345);
+  height: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  @include mq("md") {
+    width: calc(920 / 1130 * 100%);
+    max-width: rem(920);
+  }
+}
+
+/* モーダルのコンテンツ部分の指定 */
+.modal-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+// ------------------------------

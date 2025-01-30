@@ -11,15 +11,18 @@
   opacity: 0.7;
 }
 
-// PCとSP両方でマージンを0にする要素（キャンペーンとお客様の声）
-.footer__nav .footer__nav-left .menu-lists:first-child .menu-list__items .menu-list__item:first-child,
-.footer__nav .footer__nav-right .menu-lists:first-child .menu-list__items .menu-list__item:first-child {
-  margin-top: 0;
+// フッターの最初のメニュー項目のマージン調整
+.footer__nav-left .menu-lists:first-child .menu-list__item:first-child,
+.footer__nav-right .menu-lists:first-child .menu-list__item:first-child {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: 0;
+  }
 }
 
-// PCのみでマージンを0にする要素（ダイビング情報とよくある質問）
-.footer__nav .footer__nav-left .menu-lists:nth-child(2) .menu-list__items .menu-list__item:first-child,
-.footer__nav .footer__nav-right .menu-lists:nth-child(2) .menu-list__items .menu-list__item:first-child {
+// PCサイズでの2列目メニュー項目のマージン調整
+.footer__nav-left .menu-lists:nth-child(2) .menu-list__item:first-child,
+.footer__nav-right .menu-lists:nth-child(2) .menu-list__item:first-child {
   @include mq("md") {
     margin-top: 0;
   }

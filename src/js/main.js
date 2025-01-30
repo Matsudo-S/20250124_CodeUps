@@ -327,3 +327,124 @@ jQuery(function ($) {
     });
   }); 
 });
+
+// campaign tag click handler
+jQuery(function ($) {
+  // Campaign page tag functionality
+  $('.sub-campaign__tag a').first().addClass('is-active');
+
+  $('.sub-campaign__tag a').on('click', function(e) {
+    e.preventDefault();
+    $('.sub-campaign__tag a').removeClass('is-active');
+    $(this).addClass('is-active');
+  });
+
+  // Voice page tag functionality
+  $('.sub-voice__tag a').first().addClass('is-active');
+  $('.sub-voice__tag a').on('click', function(e) {
+    e.preventDefault();
+    $('.sub-voice__tag a').removeClass('is-active');
+    $(this).addClass('is-active');
+  });
+});
+
+jQuery(function ($) {
+  // モーダル
+  const modal = $('.js-modal');
+  const modalImage = $('.modal-image');
+  const modalContainer = $('.modal-container');
+  const openButtons = $('.js-modal-open');
+  const closeButton = $('.js-modal-close');
+
+  // 画像をクリックしたときの処理
+  openButtons.on('click', function(e) {
+    e.preventDefault();
+    const clickedImage = $(this).find('img');
+    const imageSrc = clickedImage.attr('src');
+    const imageAlt = clickedImage.attr('alt');
+    
+    modalImage.attr('src', imageSrc);
+    modalImage.attr('alt', imageAlt);
+    modal.addClass('is-active');
+    $('body').css('overflow', 'hidden'); // スクロール防止
+  });
+
+  // 閉じるボタンをクリックしたときの処理
+  closeButton.on('click', function(e) {
+    e.stopPropagation();
+    closeModal();
+  });
+
+  // モーダルの外側とコンテンツエリアをクリックしたときの処理
+  modal.on('click', function(e) {
+    if (!$(e.target).is('.modal-image')) {
+      closeModal();
+    }
+  });
+
+  // モーダル画像のクリックイベントの伝播を停止
+  modalImage.on('click', function(e) {
+    e.stopPropagation();
+  });
+
+  // ESCキーでモーダルを閉じる
+  $(document).on('keydown', function(e) {
+    if (e.key === 'Escape' && modal.hasClass('is-active')) {
+      closeModal();
+    }
+  });
+
+  // モーダルを閉じる関数
+  function closeModal() {
+    modal.removeClass('is-active');
+    $('body').css('overflow', ''); // スクロール防止解除
+  }
+});
+
+
+jQuery(function ($) {
+  // tab関連の処理
+  // ----------------------------------------------
+  // 初期状態で最初以外のコンテンツを非表示にする
+  $(".js-content:not(:first)").hide();
+
+  $(".js-tab").on("click", function () {
+
+    if (!$(this).hasClass("current")) {
+      $(".current").removeClass("current");
+      $(this).addClass("current");
+      var index = $(this).index();
+      // クリックしたタブのインデックス番号と同じコンテンツを表示
+      $(".js-content").hide().eq(index).fadeIn(800);
+    }
+    
+  });
+});
+
+// ページネーションの制御
+jQuery(function ($) {
+  // 初期状態で1ページ目をアクティブに
+  $('.article-pagination__number').first().addClass('is-active');
+
+  // クリックイベントの処理
+  $('.article-pagination__number').on('click', function() {
+    // すべてのページネーション番号から.is-activeを削除
+    $('.article-pagination__number').removeClass('is-active');
+    // クリックされた番号に.is-activeを追加
+    $(this).addClass('is-active');
+  });
+});
+
+// FAQの質問をクリックしたら答えを表示
+jQuery(function ($) {
+  // 初期状態ですべての答えを非表示に
+  $('.sub-faq__answer').hide();
+  // 最初のFAQだけを表示
+  $('.sub-faq__list:first-child .sub-faq__answer').show();
+  $('.sub-faq__list:first-child .sub-faq__question').addClass('is-open');
+  
+  $('.js-faq-question').on('click', function () {
+    $(this).next().slideToggle();
+    $(this).toggleClass('is-open');
+  });
+});
