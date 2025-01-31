@@ -1,42 +1,12 @@
 @use "global" as *;
 
 // sub-priceページのクラス
-
-.sub-price-fv {
-  width: 100%;
-}
-
-.sub-price-fv__img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+.sub-page-fv__img.sub-page-fv__img--price {
   background-image: url("../images/price_fv_sp.jpg");
-  aspect-ratio: 375 / 460;
-  background-size: contain;
   @include mq("md") {
     background-image: url("../images/price_fv_pc.jpg");
-    aspect-ratio: 1440 / 548;
   }
 }
-
-.sub-price-fv__title {
-  font-family: $font-family-lato;
-  color: $white_pure;
-  font-size: rem(40);
-  font-weight: $regular;
-  line-height: calc(48 / 40); 
-  @include mq("md") {
-    font-size: rem(80);
-    line-height: calc(100 / 80);
-    
-  }
-}
-
-.sub-price-fv__title::first-letter {
-  text-transform: uppercase;
-}
-
 // 以下sub-priceクラス
 .layout-sub-price {
   margin-top: rem(52);

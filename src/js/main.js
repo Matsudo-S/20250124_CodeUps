@@ -62,8 +62,9 @@ function initScrollToTopButton() {
   
   $(window).on('scroll', function() {
     const scrollTop = $(window).scrollTop();
-    const fvHeight = $('.fv').outerHeight();
-
+    const $fv = $('.fv, .sub-contact-fv');
+    const fvHeight = $fv.length ? $fv.outerHeight() : 0;
+    
     if (scrollTop > fvHeight) {
       scrollButton.addClass('show');
     } else {
@@ -446,5 +447,55 @@ jQuery(function ($) {
   $('.js-faq-question').on('click', function () {
     $(this).next().slideToggle();
     $(this).toggleClass('is-open');
+  });
+});
+
+// フォームバリデーション
+jQuery(function ($) {
+  // aタグのクリックイベントを制御
+  $('.form__submit a').on('click', function(e) {
+    // フォームの検証を行う前にデフォルトの挙動を防ぐ
+    e.preventDefault();
+    
+    // 必須項目のチェック
+    let isValid = true;
+    const $error = $('.form__error');
+    
+    // 必須の入力フィールドをチェック
+    $('input[required], textarea[required], select[required]').each(function() {
+      if (!$(this).val()) {
+        isValid = false;
+        return false; // eachループを抜ける
+      }
+    });
+
+    // チェックボックスの必須項目をチェック
+    const $requiredCheckboxGroups = $('.form__checkbox').filter(function() {
+      return $(this).closest('.form__wrap').find('.form__label span').text().includes('必須');
+    });
+
+    $requiredCheckboxGroups.each(function() {
+      if (!$(this).find('input[type="checkbox"]:checked').length) {
+        isValid = false;
+        return false;
+      }
+    });
+
+    if (!isValid) {
+      $error.addClass('is-error'); // エラーメッセージを表示
+      $('html, body').animate({
+        scrollTop: $error.offset().top - 20
+      }, 500); // エラーメッセージまでスクロール
+    } else {
+      $error.removeClass('is-error');
+      // バリデーションが成功した場合のみフォームを送信し、リンク先に遷移
+      $('form').submit();
+      window.location.href = $(this).attr('href');
+    }
+  });
+
+  // 入力があった時点でエラーメッセージを非表示にする
+  $('input, textarea, select').on('input change', function() {
+    $('.form__error').removeClass('is-error');
   });
 });

@@ -2,41 +2,12 @@
 
 // sub-voiceページのクラス
 
-.sub-voice-fv {
-  width: 100%;
-}
-
-.sub-voice-fv__img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+.sub-page-fv__img.sub-page-fv__img--voice {
   background-image: url("../images/voice_fv_sp.jpg");
-  aspect-ratio: 375 / 460;
-  background-size: contain;
   @include mq("md") {
     background-image: url("../images/voice_fv_pc.jpg");
-    aspect-ratio: 1440 / 548;
   }
 }
-
-.sub-voice-fv__title {
-  font-family: $font-family-lato;
-  color: $white_pure;
-  font-size: rem(40);
-  font-weight: $regular;
-  line-height: calc(48 / 40); 
-  @include mq("md") {
-    font-size: rem(80);
-    line-height: calc(100 / 80);
-    
-  }
-}
-
-.sub-voice-fv__title::first-letter {
-  text-transform: uppercase;
-}
-
 // 以下sub-voiceクラス
 .layout-sub-voice {
   margin-top: rem(52);
@@ -112,4 +83,8 @@
   @include mq("md") {
     margin-top: rem(72);
   }
+}
+
+.sub-voice__pagination--main {
+  margin-top: rem(80);
 }

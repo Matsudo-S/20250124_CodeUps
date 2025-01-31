@@ -1,33 +1,11 @@
 @use "global" as *;
 
 // sub-contactページのクラス
-.sub-contact-fv {
-  width: 100%;
-}
-
-.sub-contact-fv__img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+.sub-page-fv__img.sub-page-fv__img--contact {
   background-image: url("../images/contact_fv_sp.jpg");
-  aspect-ratio: 375 / 460;
+  
   @include mq("md") {
     background-image: url("../images/contact_fv_pc.jpg");
-    aspect-ratio: 1440 / 548;
-  }
-  background-size: contain;
-}
-
-.sub-contact-fv__title {
-  font-family: $font-family-lato;
-  color: $white_pure;
-  font-size: rem(40);
-  font-weight: $regular;
-  line-height: calc(48 / 40);
-  @include mq("md") {
-    font-size: rem(80);
-    line-height: calc(100 / 80);
   }
 }
 
@@ -44,7 +22,7 @@
   }
 }
 
-
+// formクラス
 .form {
   width: 100%;
   @include mq("md") {
@@ -52,147 +30,246 @@
   margin-inline: auto;
   }
 }
-.form__wrap:not(:first-child) {
+
+.form__wrap {
+  display: block;
   margin-top: rem(24);
+  padding-bottom: rem(40);
+  border-bottom: 1px dashed $main-accent-color;
+  @include mq("md") {
+    display: flex;
+    margin-top: rem(40);
+  }
 }
 
 .form__label {
+  font-size: rem(16);
   font-weight: $bold;
+  line-height: calc(19 / 16);
+  width: 100%;
+  @include mq("md") {
+    width: calc(220 / 700 * 100%);
+  }
+}
+
+.form__label span {
+  font-weight: $regular;
+  display: inline-block;
+  color: $white_pure;
+  background-color: $red;
+  font-size: rem(12);
+  line-height: calc(14 / 12);
+  padding: rem(2) rem(14);
+  margin-left: rem(8);
+}
+
+.form__input, 
+.form__select, 
+.form__textarea,
+.form__checkbox {
+  margin-top: rem(16);
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+
+
+.form__input, 
+.form__select, 
+.form__textarea {
+  width: 100%;
+  border: 1px solid $main-accent-color;
+  @include mq("md") {
+    width: calc(480 / 700 * 100%);
+  }
+}
+
+.form__input input,
+.form__textarea textarea{
+  width: 100%;
+  padding: rem(8) rem(16) rem(9) rem(16);
+}
+
+.form__select select {
+  padding: rem(8) rem(8) rem(9) rem(8);
+}
+
+.form__input,
+.form__textarea {
+    flex-grow: 1;
+}
+.form__checkbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include mq("md") {
+    width: calc(480 / 700 * 100%);
+  }
+}
+
+.form__textarea,
+.form__textarea textarea {
+  min-height: rem(200);
+}
+
+.form__input input::placeholder {
+  color: $blue-white;
+}
+
+// checkbox
+.form-checkbox label {
+  display: block;
+  @include mq(md){
+      display: inline-block;
+  }
+}
+
+.form-checkbox input + span {
+  color: $black_pure;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 0 0 rem(24);
+  position: relative;
   font-size: rem(16);
   line-height: calc(19 / 16);
 }
 
-.form__label span {
-  color: $white_pure;
-  background-color: $red;
-  padding: rem(2) rem(16);
-  margin-left: rem(8);
-}
-
-.form__input {
-  margin-top: rem(8);
-}
-
-.form-input input {
-  width: 100%;
-  height: rem(40);
-  padding: rem(8) rem(16);
+.form-checkbox input + span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: $white_pure;
   border: 1px solid $main-accent-color;
-  background-color: $white_pure;
+  display: block;
+  width: rem(14);
+  height: rem(14);
 }
 
-.form__wrap-radio {
-  margin-top: rem(24);
+.form-checkbox input + span::after {
+  content: "";
+  margin-top: rem(-2);
+  margin-left: rem(2);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-45deg);
+  display: block;
+  width: rem(9);
+  height: rem(5);
+  border-bottom: rem(2) solid $red;
+  border-left: rem(2) solid $red;
+  transition:  .3s;
+  opacity: 0;
 }
 
-.form__radio {
-  margin-top: rem(8);
-  display: flex;
-  flex-direction: column;
-  gap: rem(16);
+.form-checkbox input:checked + span::after {
+  opacity: 1;
+}
+// checkbox end
+// ------------------------------
+
+// form__select 
+.form-select {
+  position: relative;
 }
 
-@include mq("md") {
-  .form__radio {
-    flex-direction: row;
-    gap: rem(32);
-  }
+.form-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: rem(8);
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: rem(12) rem(8) 0 rem(8);
+  border-color: $main-accent-color transparent transparent transparent;
+  pointer-events: none;
 }
 
-.form-radio label {
-  display: flex;
-  align-items: center;
-  gap: rem(8);
+.form-select select {
+  width: 100%;
+  font-size: rem(12);
+  line-height: calc(14 / 12);
+  appearance: none;
   cursor: pointer;
 }
 
-.form-radio input[type="radio"] {
-  width: rem(20);
-  height: rem(20);
-  margin: 0;
+// edgeで表示される矢印を非表示
+.form-select select::-ms-expand {
+  display: none;
 }
+// form__select end
+// ------------------------------
 
-.form__wrap-select {
-  margin-top: rem(24);
-}
 
-.form__select {
-  margin-top: rem(8);
-}
-
-.form__select select {
-  width: 100%;
-  height: rem(40);
-  padding: rem(8) rem(16);
-  border: 1px solid $main-accent-color;
-  background-color: $white_pure;
-}
-
-.form__wrap-textarea {
-  margin-top: rem(24);
-}
-
-.form__textarea {
-  margin-top: rem(8);
-}
-
-.form-textarea textarea {
-  width: 100%;
-  height: rem(200);
-  padding: rem(8) rem(16);
-  border: 1px solid $main-accent-color;
-  background-color: $white_pure;
-  resize: vertical;
-}
-
-.contact-form__agree {
+.form__submit {
   margin-top: rem(24);
   text-align: center;
+  @include mq("md") {
+    margin-top: rem(40);
+  }
 }
 
-.contact-form__btn {
-  margin-top: rem(32);
+// form__privacy
+.form__privacy {
+  margin-top: rem(40);
   text-align: center;
+  @include mq("md") {
+    margin-top: rem(80);
+  }
 }
 
-.form__submit input[type="submit"] {
-  display: inline-block;
-  width: 100%;
-  max-width: rem(200);
-  padding: rem(16) rem(32);
-  background-color: $main-accent-color;
-  color: $white_pure;
+.form__privacy span {
+  font-size: rem(16);
+  line-height: calc(24 / 16);
+  @include mq("md") {
+    font-size: rem(14);
+    line-height: calc(22 / 14);
+  }
+}
+
+.form__privacy.form-checkbox input + span::before {
+  width: rem(22);
+  height: rem(22);
+}
+
+.form__privacy.form-checkbox input + span {
+  position: relative;
+  padding: 0 0 0 rem(32);
   font-size: rem(14);
-  line-height: calc(20 / 14);
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.form__submit input[type="submit"]:hover {
-  background-color: darken($main-accent-color, 10%);
-}
-
-.contact-form {
-  padding: rem(40) 0;
-  background-color: $white_pure;
-}
-
-.contact-form__inner {
-  max-width: rem(750);
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 rem(20);
-}
-
-@include mq("md") {
-  .contact-form__inner {
-    padding: 0 rem(25);
+  line-height: calc(22 / 14);
+  text-align: left;
+  @include mq("md") {
+    font-size: rem(14);
+    line-height: calc(22 / 14);
+    padding: 0 0 0 rem(40);
   }
 }
 
-.contact-form__wrap {
-  width: 100%;
+.form__privacy.form-checkbox input + span::before {
+  width: rem(22);
+  height: rem(22);
 }
 
+.form__privacy.form-checkbox input + span::after {
+  margin-top: rem(-2);
+  margin-left: rem(7);
+}
+// form__privacy end
+// ------------------------------
+
+.form__error {
+  display: none;
+  margin-top: rem(40);
+  color: $red;
+  text-align: center;
+  font-size: rem(16);
+  line-height: calc(24 / 16);
+}
+
+.form__error.is-error {
+  display: block;
+}

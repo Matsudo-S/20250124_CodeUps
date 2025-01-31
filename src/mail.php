@@ -30,15 +30,15 @@ if (version_compare(PHP_VERSION, '5.1.0', '>=')) {//PHP5.1.0以上の場合の�
 //---------------------------　必須設定　必ず設定してください　-----------------------
 
 //サイトのトップページのURL　※デフォルトでは送信完了後に「トップページへ戻る」ボタンが表示されますので
-$site_top = "https://hogehogeo/index.html";
+$site_top = "https://ourvoice-s.com/products/codeups-diving/index.html";
 
 //管理者のメールアドレス ※メールを受け取るメールアドレス(複数指定する場合は「,」で区切ってください 例 $to = "aa@aa.aa,bb@bb.bb";)
-$to = "ExciteCode@tenshoku.co.jp";
+$to = "sower.sows.in.sterile.soil@gmail.com";
 
 //送信元メールアドレス（管理者宛て、及びユーザー宛メールの送信元メールアドレスです）
 //必ず実在するメールアドレスでかつ出来る限り設置先サイトのドメインと同じドメインのメールアドレスとすることを強く推奨します
 //管理者宛てメールの返信先（reply）はユーザーのメールアドレスになります。
-$from = "info@example.com";
+$from = "sower.sows.in.sterile.soil@gmail.com";
 
 //フォームのメールアドレス入力箇所のname属性の値（name="○○"　の○○部分）
 $Email = "メールアドレス";
@@ -68,10 +68,10 @@ $useToken = 1;
 $BccMail = "";
 
 // 管理者宛に送信されるメールのタイトル（件名）
-$subject = "ランディングページののお問い合わせ";
+$subject = "test_お問い合わせ";
 
 // 送信確認画面の表示(する=1, しない=0)
-$confirmDsp = 0;
+$confirmDsp = 1;
 
 // 送信完了後に自動的に指定のページ(サンクスページなど)に移動する(する=1, しない=0)
 // CV率を解析したい場合などはサンクスページを別途用意し、URLをこの下の項目で指定してください。
@@ -79,7 +79,7 @@ $confirmDsp = 0;
 $jumpPage = 1;
 
 // 送信完了後に表示するページURL（上記で1を設定した場合のみ）※httpから始まるURLで指定ください。（相対パスでも基本的には問題ないです）
-$thanksPage = "https://example.com/thanks.html";
+$thanksPage = "https://ourvoice-s.com/products/codeups-diving/contact__thanks.html";
 
 // 必須入力項目を設定する(する=1, しない=0)
 $requireCheck = 1;
@@ -99,7 +99,7 @@ $require = array('お名前','メールアドレス','category','message');
 $remail = 1;
 
 //自動返信メールの送信者欄に表示される名前　※あなたの名前や会社名など（もし自動返信メールの送信者名が文字化けする場合ここは空にしてください）
-$refrom_name = "ExciteCode";
+$refrom_name = "CodeUps_test";
 
 // 差出人に送信確認メールを送る場合のメールのタイトル（上記で1を設定した場合のみ）
 $re_subject = "送信ありがとうございました";
@@ -126,7 +126,7 @@ $mailFooterDsp = 1;
 $mailSignature = <<< FOOTER
 
 ──────────────────────
-株式会社ExciteCode　佐藤太郎
+株式会社CodeUps　佐藤太郎
 〒150-XXXX 東京都○○区○○ 　○○ビル○F　
 TEL：03- XXXX - XXXX 　FAX：03- XXXX - XXXX
 携帯：090- XXXX - XXXX 　

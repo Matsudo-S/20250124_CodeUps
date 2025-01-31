@@ -1,0 +1,16 @@
+@use "global" as *;
+
+// thanks
+.thanks {
+  text-align: center;
+}
+
+.thanks__title,
+.thanks__text {
+  font-weight: $regular;
+  line-height: calc(18 / 16);
+}
+
+.thanks__text {
+  margin-top: rem(40);
+}

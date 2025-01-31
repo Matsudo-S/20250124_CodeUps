@@ -2,39 +2,11 @@
 
 // sub-informationページのクラス
 
-.sub-information-fv {
-  width: 100%;
-}
-
-.sub-information-fv__img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+.sub-page-fv__img.sub-page-fv__img--information {
   background-image: url("../images/info_fv_sp.jpg");
-  aspect-ratio: 375 / 460;
-  background-size: contain;
   @include mq("md") {
     background-image: url("../images/info_fv_pc.jpg");
-    aspect-ratio: 1440 / 548;
   }
-}
-
-.sub-information-fv__title {
-  font-family: $font-family-lato;
-  color: $white_pure;
-  font-size: rem(40);
-  font-weight: $regular;
-  line-height: calc(48 / 40); 
-  @include mq("md") {
-    font-size: rem(80);
-    line-height: calc(100 / 80);
-    
-  }
-}
-
-.sub-information-fv__title::first-letter {
-  text-transform: uppercase;
 }
 
 // 以下sub-informationクラス
