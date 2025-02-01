@@ -33,7 +33,7 @@
   color: $white_pure;
   font-weight: $bold;
   font-size: rem(16);
-  line-height: 0.8;
+  line-height: calc(18 / 16);
   position: relative;
 }
 

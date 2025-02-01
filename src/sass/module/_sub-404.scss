@@ -1,0 +1,78 @@
+@use "global" as *;
+
+// 404ページ専用の背景色とテキスト色
+.body--sub-404 {
+  background-color: $main-accent-color;
+  color: $white_pure;
+}
+
+.sub-404__header.layout-header {
+  position: static;
+}
+
+.sub-404__contents {
+  margin-top: rem(119);
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
+
+.sub-404__inner{
+  text-align: center;
+  margin-inline: auto;
+}
+
+.sub-404__title {
+  font-size: rem(80);
+  font-weight: $regular;
+  font-family: $font-family-lato;
+  line-height: calc(96 / 80);
+  letter-spacing: .2em;
+  text-indent: .2em;
+  @include mq("md") {
+    font-size: rem(160);
+    line-height: calc(192 / 160);
+  }
+}
+
+.sub-404__btn {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
+
+.sub-404__btn .btn::after {
+	position: absolute;
+  border: 1px solid $white_pure;
+  
+}
+
+.sub-404__btn .btn__text {
+  background-color: $white_pure;
+  border: 1px solid $white_pure;
+  color: $main-accent-color;
+}
+
+.sub-404__btn .btn__text::before {
+  display: inline-block;
+  background-color: $main-accent-color;
+}
+
+.sub-404__btn .btn__text::after{
+  border-bottom: 1px solid $main-accent-color;
+  border-right: 1px solid $main-accent-color;
+}
+
+.sub-404__btn .btn__text {
+  color: $main-accent-color;
+}
+
+.sub-404__btn .btn:hover .btn__text {
+  color: $white_pure;
+}
+
+.sub-404__btn .btn:hover .btn__text::after{
+  border-bottom: 1px solid $white_pure;
+  border-right: 1px solid $white_pure;
+}

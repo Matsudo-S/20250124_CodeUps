@@ -452,50 +452,72 @@ jQuery(function ($) {
 
 // フォームバリデーション
 jQuery(function ($) {
-  // aタグのクリックイベントを制御
+  /**
+   * お問い合わせフォームのバリデーション処理
+   * 
+   * 以下の項目をチェック：
+   * 1. 必須入力フィールド（テキスト、メール、電話番号、テキストエリア）が空でないか
+   * 2. 必須チェックボックスグループが1つ以上チェックされているか
+   * 3. プライバシーポリシーの同意チェックボックスがチェックされているか
+   */
   $('.form__submit a').on('click', function(e) {
-    // フォームの検証を行う前にデフォルトの挙動を防ぐ
+    // デフォルトのクリックイベントを防止
     e.preventDefault();
     
-    // 必須項目のチェック
     let isValid = true;
     const $error = $('.form__error');
     
-    // 必須の入力フィールドをチェック
+    // 既存のエラー表示をリセット
+    $('.is-error').removeClass('is-error');
+    
+    // 1. 必須入力フィールドのチェック
     $('input[required], textarea[required], select[required]').each(function() {
-      if (!$(this).val()) {
+      if (!$(this).val().trim()) {
         isValid = false;
-        return false; // eachループを抜ける
+        $(this).closest('.form__input, .form__select, .form__textarea').addClass('is-error');
       }
     });
 
-    // チェックボックスの必須項目をチェック
-    const $requiredCheckboxGroups = $('.form__checkbox').filter(function() {
-      return $(this).closest('.form__wrap').find('.form__label span').text().includes('必須');
-    });
-
-    $requiredCheckboxGroups.each(function() {
-      if (!$(this).find('input[type="checkbox"]:checked').length) {
-        isValid = false;
-        return false;
+    // 2. 必須チェックボックスグループのチェック
+    $('.form__checkbox').each(function() {
+      if ($(this).closest('.form__wrap').find('.form__label span').text().includes('必須')) {
+        if (!$(this).find('input[type="checkbox"]:checked').length) {
+          isValid = false;
+          $(this).addClass('is-error');
+        }
       }
     });
 
+    // 3. プライバシーポリシー同意チェック
+    if (!$('.form__privacy input[type="checkbox"]').prop('checked')) {
+      isValid = false;
+      $('.form__privacy').addClass('is-error');
+    }
+
+    // バリデーション結果による処理分岐
     if (!isValid) {
-      $error.addClass('is-error'); // エラーメッセージを表示
+      // エラーがある場合
+      e.stopPropagation();
+      $error.addClass('is-error');
+      // エラーメッセージまでスクロール
       $('html, body').animate({
         scrollTop: $error.offset().top - 20
-      }, 500); // エラーメッセージまでスクロール
+      }, 500);
+      return false;
     } else {
+      // エラーがない場合
       $error.removeClass('is-error');
-      // バリデーションが成功した場合のみフォームを送信し、リンク先に遷移
       $('form').submit();
       window.location.href = $(this).attr('href');
     }
   });
 
-  // 入力があった時点でエラーメッセージを非表示にする
+  /**
+   * 入力・変更時のエラー表示制御
+   * ユーザーが修正を行った時点でエラー表示を消去
+   */
   $('input, textarea, select').on('input change', function() {
     $('.form__error').removeClass('is-error');
+    $(this).closest('.form__input, .form__select, .form__textarea, .form__checkbox, .form__privacy').removeClass('is-error');
   });
 });

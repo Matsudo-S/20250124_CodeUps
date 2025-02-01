@@ -1,0 +1,91 @@
+@use "global" as *;
+
+// sub-site-mapページのクラス
+.sub-page-fv__img.sub-page-fv__img--site-map {
+  background-image: url("../images/common/common_fv_fishies_sp.jpg");
+  @include mq("md") {
+    background-image: url("../images/common/common_fv_fishies_pc.jpg");
+  }
+}
+
+// 以下sub-site-mapクラス
+.layout-sub-site-map {
+  margin-top: rem(52);
+  @include mq("md") {
+    margin-top: rem(150);
+  }
+}
+
+
+.sub-site-map__nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: rem(12);
+  margin-left: rem(22);
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: rem(29);
+  }
+}
+
+.sub-site-map__nav-left {
+  display: block;
+  @include mq("md") {
+    display: flex;
+  }
+}
+
+.sub-site-map__nav-right {
+  display: block;
+  margin-left: rem(16);
+  @include mq("md") {
+    display: flex;
+    margin-left: rem(0);
+  }
+}
+
+.sub-site-map__menu-lists {
+  width: 100%;
+}
+
+// フッターの最初のメニュー項目のマージン調整
+.sub-site-map__nav-left .menu-lists:first-child .menu-list__item:first-child,
+.sub-site-map__nav-right .menu-lists:first-child .menu-list__item:first-child {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+
+// PCサイズでの2列目メニュー項目のマージン調整
+.sub-site-map__nav-left .menu-lists:nth-child(2) .menu-list__item:first-child,
+.sub-site-map__nav-right .menu-lists:nth-child(2) .menu-list__item:first-child {
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+
+.sub-site-map__nav .menu-list__item-sub a {
+  color: $main-font-color;
+}
+
+// メインメニューのリンクスタイル
+.sub-site-map__nav .menu-list__item > a {
+  color: $main-font-color;
+  font-weight: $bold;
+  font-size: rem(16);
+  line-height: calc(18 / 16);
+  position: relative;
+}
+
+// メインメニューのヒトデアイコン（サブメニューには適用しない）
+.sub-site-map__nav .menu-list__item > a::before {
+  background-image: url("../images/common/common_hitode_green.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: rem(18);
+  height: rem(18);
+  content: "";
+  position: absolute;
+  margin-left: rem(-24);
+}

@@ -3,17 +3,10 @@
 // sub-contactページのクラス
 .sub-page-fv__img.sub-page-fv__img--contact {
   background-image: url("../images/contact_fv_sp.jpg");
-  
   @include mq("md") {
     background-image: url("../images/contact_fv_pc.jpg");
   }
 }
-
-
-.sub-contact-fv__title::first-letter {
-  text-transform: uppercase;
-}
-
 // 以下sub-contactクラス
 .layout-sub-contact {
   margin-top: rem(52);
@@ -73,6 +66,14 @@
   }
 }
 
+.form-input,
+.form-select,
+.form-textarea {
+  &.is-error {
+    background-color: rgba($red, 0.2);
+    border-color: $red;
+  }
+}
 
 .form__input, 
 .form__select, 
@@ -166,6 +167,11 @@
 
 .form-checkbox input:checked + span::after {
   opacity: 1;
+}
+
+.form-checkbox.is-error input + span::before {
+  background-color: rgba($red, 0.2);
+  border-color: $red;
 }
 // checkbox end
 // ------------------------------

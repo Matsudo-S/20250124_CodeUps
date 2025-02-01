@@ -240,24 +240,24 @@
               <dl class="form__wrap">
                 <dt class="form__label">名前<span>必須</span></dt>
                 <dd class="form__input form-input">
-                  <input type="text" name="name" placeholder="沖縄&nbsp;太郎">
+                  <input type="text" name="name" placeholder="沖縄&nbsp;太郎" required maxlength="20">
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">メールアドレス<span>必須</span></dt>
-                <dd class="form__input form-input">
-                  <input type="email" name="email" placeholder="aaa000@ggmail.com">
+                <dd class="form__input form-input" required>
+                  <input type="email" name="email" placeholder="aaa000@ggmail.com" required maxlength="20">
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">電話番号<span>必須</span></dt>
-                <dd class="form__input form-input">
-                  <input type="tel" name="tel" placeholder="000-0000-0000">
+                <dd class="form__input form-input" required pattern="[0-9\-]{9,}">
+                  <input type="tel" name="tel" placeholder="000-0000-0000" required maxlength="13">
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">お問合せ項目<span>必須</span></dt>
-                <dd class="form__checkbox form-checkbox">
+                <dd class="form__checkbox form-checkbox" required>
                   <label><input type="checkbox" name="question" value="diving_course"><span>ダイビング講習について</span></label>
                   <label><input type="checkbox" name="question" value="fun_diving"><span>ファンダイビングについて</span></label>
                   <label><input type="checkbox" name="question" value="trial_diving"><span>体験ダイビングについて</span></label>
@@ -277,12 +277,12 @@
               </dl>
               <dl class="form__wrap form__wrap--textarea">
                 <dt class="form__label">お問い合わせ内容<span>必須</span></dt>
-                <dd class="form__textarea form-textarea">
-                  <textarea name="message"></textarea>
+                <dd class="form__textarea form-textarea" required>
+                  <textarea name="message" required></textarea>
                 </dd>
               </dl>
 
-              <div class="form__privacy form-checkbox">
+              <div class="form__privacy form-checkbox" required>
                 <label>
                   <input type="checkbox" name="privacy" required>
                   <span>個人情報の取り扱いについて同意のうえ<span class="br"></span>送信します。</span></span>

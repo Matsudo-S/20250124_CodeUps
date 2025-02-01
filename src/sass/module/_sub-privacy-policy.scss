@@ -1,0 +1,61 @@
+@use "global" as *;
+
+// sub-privacy-policyページのクラス
+.sub-page-fv__img.sub-page-fv__img--privacy-policy {
+  background-image: url("../images/common/common_fv_fishies_sp.jpg");
+  @include mq("md") {
+    background-image: url("../images/common/common_fv_fishies_pc.jpg");
+  }
+}
+
+.sub-page-fv__title.sub-page-fv__title--privacy-policy {
+  text-transform: capitalize;
+}
+// 以下sub-privacy-policyクラス
+.layout-sub-privacy-policy {
+  margin-top: rem(52);
+  @include mq("md") {
+    margin-top: rem(150);
+  }
+}
+
+.sub-privacy-policy__contents {
+  width: 100%;
+  @include mq("md") {
+    max-width: rem(800);
+    margin-inline: auto;
+  }
+}
+
+.sub-page-texts__title {
+  font-weight: $medium;
+  font-size: rem(24);
+  line-height: calc(29 / 24);
+  @include mq("md") {
+    font-size: rem(32);
+    line-height: calc(38 / 32);
+  }
+}
+
+.sub-page-texts__body {
+  margin-top: rem(40);
+  font-size: rem(16);
+  font-weight: $regular;
+  line-height: calc(32 / 16);
+  @include mq("md") {
+    margin-top: rem(48);
+  }
+}
+
+.sub-page-texts__list {
+  margin-top: rem(32);
+}
+
+.sub-page-texts__item {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+.sub-page-texts__body p:last-of-type {
+  margin-top: rem(32);
+}
