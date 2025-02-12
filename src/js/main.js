@@ -116,16 +116,7 @@ jQuery(function ($) {
       });
     });
   }
-
-  function animateColorBox(color, image, speed) {
-    color.animate({ width: "100%" }, speed * 1.5, function() {
-      image.css("opacity", "1");
-      color.css({ left: "0", right: "auto" }).animate({ width: "0%" }, speed * 0.7);
-    });
-  }
-
   initColorBox();
-  animateColorBox();
 });
 
 
