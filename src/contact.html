@@ -39,7 +39,7 @@
 
 <body>
   <div class="body-wrap">
-    <header class="sub-contact__header sub-page__header header js-header layout-header">
+    <header class="sub-contact__header header js-header layout-header is-active">
       <div class="header__inner">
         <h1 class="header__logo">
           <a href="./index.html">
@@ -203,7 +203,7 @@
                   </div> <!-- End of menu-list --> 
                 </div> <!-- End of menu-lists -->
               </div> <!-- End of menu-list -->  
-    
+             </div>
             </div> <!-- End of drawer__right -->
           </div> <!-- End of drawer-menu__lists -->
         </div> <!-- End of drawer-menu__inner -->
@@ -233,9 +233,10 @@
       <div id="sub-contact" class="sub-contact layout-sub-contact">
         <div class="sub-contact__inner sub-page__inner inner">
 
-
           <div class="sub-contact__forms">
-            <div class="form__error">*入力されていない項目があります。入力してください。</div>
+            <div class="sub-contact__error js-error">*入力されていない項目があります。入力してください。</div>
+            <div class="sub-contact__error js-email-error">*有効なメールアドレスを入力してください（例:example@domain.com）</div>
+            <div class="sub-contact__error js-tel-error">*有効な電話番号を入力してください（例:000-0000-0000）</div>
             <form class="form" action="mail.php">
               <dl class="form__wrap">
                 <dt class="form__label">名前<span>必須</span></dt>
@@ -245,19 +246,29 @@
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">メールアドレス<span>必須</span></dt>
-                <dd class="form__input form-input" required>
-                  <input type="email" name="email" placeholder="aaa000@ggmail.com" required maxlength="20">
+                <dd class="form__input form-input">
+                  <input type="email" 
+                        name="email" 
+                        placeholder="aaa000@ggmail.com" 
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                        required 
+                        maxlength="100">
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">電話番号<span>必須</span></dt>
-                <dd class="form__input form-input" required pattern="[0-9\-]{9,}">
-                  <input type="tel" name="tel" placeholder="000-0000-0000" required maxlength="13">
+                <dd class="form__input form-input">
+                  <input type="tel" 
+                        name="tel" 
+                        placeholder="000-0000-0000" 
+                        pattern="\d{2,4}-?\d{2,4}-?\d{3,4}"
+                        required 
+                        maxlength="13">
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">お問合せ項目<span>必須</span></dt>
-                <dd class="form__checkbox form-checkbox" required>
+                <dd class="form__checkbox form-checkbox">
                   <label><input type="checkbox" name="question" value="diving_course"><span>ダイビング講習について</span></label>
                   <label><input type="checkbox" name="question" value="fun_diving"><span>ファンダイビングについて</span></label>
                   <label><input type="checkbox" name="question" value="trial_diving"><span>体験ダイビングについて</span></label>
@@ -277,25 +288,22 @@
               </dl>
               <dl class="form__wrap form__wrap--textarea">
                 <dt class="form__label">お問い合わせ内容<span>必須</span></dt>
-                <dd class="form__textarea form-textarea" required>
+                <dd class="form__textarea form-textarea">
                   <textarea name="message" required></textarea>
                 </dd>
               </dl>
 
-              <div class="form__privacy form-checkbox" required>
+              <div class="form__privacy form-checkbox">
                 <label>
                   <input type="checkbox" name="privacy" required>
-                  <span>個人情報の取り扱いについて同意のうえ<span class="br"></span>送信します。</span></span>
+                  <span><a class="form__privacy-link" target="_blank" rel="noopener noreferrer" href="./privacy-policy.html">個人情報の取り扱いについて</a>同意のうえ<span class="br"></span>送信します。</span>
                 </label>
               </div>
 
               <div class="form__submit form-submit">
-                <div class="btn">
-                  <a href="contact__thanks.html" class="btn__text">
-                    send
-                    <input type="submit" value="">
-                  </a>
-                </div>
+                <button type="submit" class="btn">
+                  <span class="btn__text">send</span>
+                </button>
               </div>
             </form>
           </div> <!-- End of sub-contact__forms -->

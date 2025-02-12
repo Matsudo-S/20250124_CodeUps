@@ -54,6 +54,8 @@
 .sub-page-texts__item {
   list-style: decimal;
   list-style-position: inside;
+  text-indent: -1em;
+  padding-left: 1em;
 }
 
 .sub-page-texts__body p:last-of-type {

@@ -353,7 +353,6 @@ jQuery(function ($) {
   // モーダル
   const modal = $('.js-modal');
   const modalImage = $('.modal-image');
-  const modalContainer = $('.modal-container');
   const openButtons = $('.js-modal-open');
   const closeButton = $('.js-modal-close');
 
@@ -454,29 +453,45 @@ jQuery(function ($) {
 jQuery(function ($) {
   /**
    * お問い合わせフォームのバリデーション処理
-   * 
-   * 以下の項目をチェック：
-   * 1. 必須入力フィールド（テキスト、メール、電話番号、テキストエリア）が空でないか
-   * 2. 必須チェックボックスグループが1つ以上チェックされているか
-   * 3. プライバシーポリシーの同意チェックボックスがチェックされているか
    */
-  $('.form__submit a').on('click', function(e) {
-    // デフォルトのクリックイベントを防止
+  $('.form-submit button').on('click', function(e) {
     e.preventDefault();
     
     let isValid = true;
-    const $error = $('.form__error');
+    const $error = $('.js-error');
+    const $emailError = $('.js-email-error');
+    const $telError = $('.js-tel-error');
     
     // 既存のエラー表示をリセット
     $('.is-error').removeClass('is-error');
+    $error.removeClass('is-error');
+    $emailError.removeClass('is-error');
+    $telError.removeClass('is-error');
     
     // 1. 必須入力フィールドのチェック
     $('input[required], textarea[required], select[required]').each(function() {
       if (!$(this).val().trim()) {
         isValid = false;
         $(this).closest('.form__input, .form__select, .form__textarea').addClass('is-error');
+        $error.addClass('is-error');
       }
     });
+
+    // メールアドレスのパターンチェック
+    const $emailInput = $('input[type="email"]');
+    if ($emailInput.val() && !$emailInput[0].checkValidity()) {
+      isValid = false;
+      $emailInput.closest('.form__input').addClass('is-error');
+      $emailError.addClass('is-error');
+    }
+
+    // 電話番号のパターンチェック
+    const $telInput = $('input[type="tel"]');
+    if ($telInput.val() && !$telInput[0].checkValidity()) {
+      isValid = false;
+      $telInput.closest('.form__input').addClass('is-error');
+      $telError.addClass('is-error');
+    }
 
     // 2. 必須チェックボックスグループのチェック
     $('.form__checkbox').each(function() {
@@ -488,7 +503,7 @@ jQuery(function ($) {
       }
     });
 
-    // 3. プライバシーポリシー同意チェック
+    // 3. プライバシーポリシーの同意チェック
     if (!$('.form__privacy input[type="checkbox"]').prop('checked')) {
       isValid = false;
       $('.form__privacy').addClass('is-error');
@@ -496,28 +511,38 @@ jQuery(function ($) {
 
     // バリデーション結果による処理分岐
     if (!isValid) {
-      // エラーがある場合
       e.stopPropagation();
-      $error.addClass('is-error');
-      // エラーメッセージまでスクロール
+      // エラーメッセージまでスクロール（最も上にある表示中のエラーメッセージへ）
+      const $firstError = $('.sub-contact__error.is-error').first();
       $('html, body').animate({
-        scrollTop: $error.offset().top - 20
+        scrollTop: $firstError.offset().top - 20
       }, 500);
       return false;
     } else {
-      // エラーがない場合
-      $error.removeClass('is-error');
-      $('form').submit();
-      window.location.href = $(this).attr('href');
+      window.location.href = 'contact__thanks.html';
     }
   });
 
   /**
    * 入力・変更時のエラー表示制御
-   * ユーザーが修正を行った時点でエラー表示を消去
    */
   $('input, textarea, select').on('input change', function() {
-    $('.form__error').removeClass('is-error');
-    $(this).closest('.form__input, .form__select, .form__textarea, .form__checkbox, .form__privacy').removeClass('is-error');
+    const $input = $(this);
+    const $parent = $input.closest('.form__input, .form__select, .form__textarea, .form__checkbox, .form__privacy');
+    
+    $parent.removeClass('is-error');
+    
+    // 特定の入力フィールドのエラーメッセージを非表示
+    if ($input.attr('type') === 'email') {
+      $('.js-email-error').removeClass('is-error');
+    }
+    if ($input.attr('type') === 'tel') {
+      $('.js-tel-error').removeClass('is-error');
+    }
+    
+    // すべてのエラーが解消された場合、共通エラーメッセージを非表示
+    if ($('.is-error').length === 0) {
+      $('.sub-contact__error').removeClass('is-error');
+    }
   });
 });

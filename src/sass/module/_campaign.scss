@@ -182,15 +182,40 @@
 }
 
 .campaign-card__btn {
+  margin-top: rem(38);
+  text-align: center;
   display: none;
   @include mq("md") {
     display: block;
-    text-align: center;
     margin-top: rem(16);
   }
 }
 
 
+// 確認事項　.btnのスタイルを受け継がない。
+.campaign-card__btn .btn {
+  display: inline-block;
+}
+
+.campaign-card__btn .btn a {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.campaign-card__btn .btn:hover .btn__text {
+  color: $main-accent-color;
+}
+
+.campaign-card__btn .btn:hover .btn__text::before {
+  transform: scale(1, 1);
+}
+
+.campaign-card__btn .btn:hover .btn__text::after {
+  border-bottom: 1px solid $main-accent-color;
+  border-right: 1px solid $main-accent-color;
+}
+// -----------------------------------------------
 .campaign__btn {
   margin-top: rem(40);
   text-align: center;

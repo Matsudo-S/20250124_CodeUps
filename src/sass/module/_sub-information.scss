@@ -46,7 +46,7 @@
   pointer-events: auto;
   
   @include mq("md") {
-    max-width: rem(300);
+    // max-width: rem(300);
     height: rem(90);
     font-size: rem(24);
     line-height: calc(29 / 24);
@@ -70,7 +70,6 @@
   @include mq("md") {
     width: rem(61);
     aspect-ratio: 61 / 54;
-    margin-left: rem(16);
     display: flex;
   }
 }
@@ -85,6 +84,9 @@
 .sub-information-tag__title {
   text-align: center;
   pointer-events: none;
+  @include mq("md") {
+    white-space: nowrap;
+  }
 }
 
 // informationのカード

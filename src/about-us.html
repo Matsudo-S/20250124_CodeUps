@@ -39,7 +39,7 @@
 
 <body>
   <div class="body-wrap">
-    <header class="sub-about__header sub-page__header header js-header layout-header">
+    <header class="sub-about__header header js-header layout-header is-active">
       <div class="header__inner">
         <h1 class="header__logo">
           <a href="./index.html">
@@ -110,7 +110,6 @@
         <div class="drawer-menu__inner">
           <div class="drawer-menu__lists">
             <div class="drawer-menu__left">
-    
               <div class="drawer__menu-list">
                 <div class="menu-lists">
                   <div class="menu-list">
@@ -158,29 +157,28 @@
             
             <!-- drawer-menu__right -->
             <div class="drawer-menu__right">
-    
               <div class="drawer__menu-list">
                 <div class="menu-lists">
                   <div class="menu-list">
                     <div class="menu-list__inner">
                       <ul class="menu-list__items">
                         <li class="menu-list__item ">
-                        <a href="./voice.html">お客様の声</a>
-                      </li>
-                      <li class="menu-list__item ">
-                        <a href="./price.html">料金一覧</a>
-                        <ul class="menu-list__item-subs">
-                          <li class="menu-list__item-sub"><a href="./information.html#license">ライセンス講習</a></li>
-                          <li class="menu-list__item-sub"><a href="./information.html#experience-diving">体験ダイビング</a></li>
-                          <li class="menu-list__item-sub"><a href="./information.html#fun-diving">ファンダイビング</a></li>
-                        </ul>
-                      </li>  
-                    </ul>
-                  </div>
+                          <a href="./voice.html">お客様の声</a>
+                        </li>
+                        <li class="menu-list__item ">
+                          <a href="./price.html">料金一覧</a>
+                          <ul class="menu-list__item-subs">
+                            <li class="menu-list__item-sub"><a href="./information.html#license">ライセンス講習</a></li>
+                            <li class="menu-list__item-sub"><a href="./information.html#experience-diving">体験ダイビング</a></li>
+                            <li class="menu-list__item-sub"><a href="./information.html#fun-diving">ファンダイビング</a></li>
+                          </ul>
+                        </li>  
+                      </ul>
+                    </div>
+                  </div> <!-- End of menu-list -->
                 </div> <!-- End of menu-lists -->
-              </div> <!-- End of menu-list -->  
+              </div> <!-- End of drawer__menu-list -->
     
-              
               <div class="drawer__menu-list">
                 <div class="menu-lists">
                   <div class="menu-list">
@@ -202,8 +200,7 @@
                     </div>
                   </div> <!-- End of menu-list --> 
                 </div> <!-- End of menu-lists -->
-              </div> <!-- End of menu-list -->  
-    
+              </div> <!-- End of drawer__menu-list -->
             </div> <!-- End of drawer__right -->
           </div> <!-- End of drawer-menu__lists -->
         </div> <!-- End of drawer-menu__inner -->
@@ -219,7 +216,6 @@
         </div>
       </div>
     
-      
       <nav class="breadcrumb">
         <ol class="breadcrumb__items inner">
           <li class="breadcrumb__item"><a href="./index.html">TOP</a></li>
@@ -265,22 +261,22 @@
           <div class="sub-about__galleries">
             <div class="galleries">
               <div class="gallery js-modal-open">
-                <img src="./assets/images/about_garrey_01.jpg" alt="沖縄家屋の屋根のシーサーの置物">
+                <img src="./assets/images/about_garrey_01.jpg" alt="サンゴ礁と小魚の群れ">
               </div>
               <div class="gallery js-modal-open">
-                <img src="./assets/images/about_garrey_02.jpg" alt="沖縄家屋の屋根のシーサーの置物">
+                <img src="./assets/images/about_garrey_02.jpg" alt="透き通った青い海と桟橋">
               </div>
               <div class="gallery js-modal-open">
-                <img src="./assets/images/about_garrey_03.jpg" alt="沖縄家屋の屋根のシーサーの置物">
+                <img src="./assets/images/about_garrey_03.jpg" alt="2匹の縞模様の熱帯魚">
               </div>
               <div class="gallery js-modal-open">
-                <img src="./assets/images/about_garrey_04.jpg" alt="沖縄家屋の屋根のシーサーの置物">
+                <img src="./assets/images/about_garrey_04.jpg" alt="黄色い熱帯魚のアップ">
               </div>
               <div class="gallery js-modal-open">
-                <img src="./assets/images/about_garrey_05.jpg" alt="沖縄家屋の屋根のシーサーの置物">
+                <img src="./assets/images/about_garrey_05.jpg" alt="サンゴ礁と黄色い熱帯魚">
               </div>
               <div class="gallery js-modal-open">
-                <img src="./assets/images/about_garrey_06.jpg" alt="沖縄家屋の屋根のシーサーの置物">
+                <img src="./assets/images/about_garrey_06.jpg" alt="青い海中を泳ぐ小魚の群れ">
               </div>
             </div>
           </div>
@@ -295,7 +291,8 @@
             <div class="modal-close js-modal-close"></div>
             <!-- モーダル内部のコンテンツ -->
             <div class="modal-content">
-              <img src="" alt="" class="modal-image">
+              <!-- 1枚目を当てはめているが、実際はjs-modal-openでモーダルを開いたときに、その画像が入る -->
+              <img src="./assets/images/about_garrey_01.jpg" alt="サンゴ礁と小魚の群れ" class="modal-image">
             </div>
           </div>
         </div>

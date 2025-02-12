@@ -264,18 +264,23 @@
   margin-top: rem(-2);
   margin-left: rem(7);
 }
+
+.form__privacy-link {
+  text-decoration: underline;
+}
 // form__privacy end
 // ------------------------------
 
-.form__error {
+.sub-contact__error {
   display: none;
   margin-top: rem(40);
   color: $red;
   text-align: center;
   font-size: rem(16);
   line-height: calc(24 / 16);
+  font-weight: $bold;
 }
 
-.form__error.is-error {
+.sub-contact__error.is-error {
   display: block;
 }

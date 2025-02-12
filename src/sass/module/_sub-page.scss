@@ -70,3 +70,37 @@
   text-transform: uppercase;
 }
 
+.sub-page-texts__title {
+  font-weight: $medium;
+  font-size: rem(24);
+  line-height: calc(29 / 24);
+  @include mq("md") {
+    font-size: rem(32);
+    line-height: calc(38 / 32);
+  }
+}
+
+.sub-page-texts__body {
+  margin-top: rem(40);
+  font-size: rem(16);
+  font-weight: $regular;
+  line-height: calc(32 / 16);
+  @include mq("md") {
+    margin-top: rem(48);
+  }
+}
+
+.sub-page-texts__list {
+  margin-top: rem(32);
+}
+
+.sub-page-texts__item {
+  list-style: decimal;
+  list-style-position: inside;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.sub-page-texts__body p:last-of-type {
+  margin-top: rem(32);
+}
