@@ -90,7 +90,11 @@
   }
 }
 
-.sub-page-texts__list {
+.sub-page-texts__paragraph:not(:first-child) {
+  margin-top: rem(32);
+}
+
+.sub-page-texts__list:first-of-type {
   margin-top: rem(32);
 }
 
@@ -99,8 +103,4 @@
   list-style-position: inside;
   text-indent: -1em;
   padding-left: 1em;
-}
-
-.sub-page-texts__body p:last-of-type {
-  margin-top: rem(32);
 }

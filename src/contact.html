@@ -232,7 +232,7 @@
             <div class="sub-contact__error js-error">*入力されていない項目があります。入力してください。</div>
             <div class="sub-contact__error js-email-error">*有効なメールアドレスを入力してください（例:example@domain.com）</div>
             <div class="sub-contact__error js-tel-error">*有効な電話番号を入力してください（例:000-0000-0000）</div>
-            <form class="form" action="./mail.php" method="post" novalidate>
+            <form class="form" action="mail.php" method="post" novalidate>
               <dl class="form__wrap">
                 <dt class="form__label">名前<span>必須</span></dt>
                 <dd class="form__input form-input">
@@ -245,7 +245,7 @@
                   <input type="email" 
                         name="email" 
                         placeholder="aaa000@ggmail.com" 
-                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                        pattern="[a-zA-Z0-9._\-\+]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                         required 
                         maxlength="100">
                 </dd>

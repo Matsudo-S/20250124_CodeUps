@@ -84,9 +84,7 @@
 .sub-information-tag__title {
   text-align: center;
   pointer-events: none;
-  @include mq("md") {
-    white-space: nowrap;
-  }
+  white-space: nowrap;
 }
 
 // informationのカード

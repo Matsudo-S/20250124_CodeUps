@@ -161,25 +161,20 @@ jQuery(function ($) {
 
 function confirm_session_storage() {
   const isFirstLoad = sessionStorage.getItem('isFirstLoad');
-  // const $loadingContainer = $('.js-fv-loading-container');
   const $loadingContainer = $('.js-fv-loading');
   const $header = $('.header');
 
-  
-  window.addEventListener('load', function() {
-    // 初回アクセス時
+  // DOMContentLoadedを使用してパフォーマンスを改善
+  document.addEventListener('DOMContentLoaded', function() {
     if (!isFirstLoad) {
       initialShowAndHideTitle();
       initFvAnimation();
       initLoadingCompletion();
-
       sessionStorage.setItem('isFirstLoad', true);
-    // 2回目以降
     } else {
       $loadingContainer.hide();
       $header.addClass('is-active');
-      
-      init_fv_slider(0);
+      init_fv_slider(0); // スライダーを初期化
     }
   });
 }
@@ -187,17 +182,54 @@ function confirm_session_storage() {
 // fv slick slider
 function init_fv_slider($initialSlide) {
   const $slider = $('.js-fv-slider');
-  $slider.slick({
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    speed: 3000,
-    infinite: true,
-    cssEase: 'ease-in-out',
-    fade: true,
-    initialSlide: $initialSlide
-  });
-  $slider.css('opacity', '1');
+  const $sliderImages = $slider.find('img');
+  let loadedImages = 0;
+  const totalImages = $sliderImages.length;
+
+  // 画像が読み込まれていない場合は読み込みを待つ
+  if (totalImages > 0) {
+    $sliderImages.each(function() {
+      if (this.complete) {
+        loadedImages++;
+        if (loadedImages === totalImages) {
+          initializeSlider();
+        }
+      } else {
+        $(this).on('load', function() {
+          loadedImages++;
+          if (loadedImages === totalImages) {
+            initializeSlider();
+          }
+        });
+      }
+    });
+  } else {
+    // 画像がない場合は直接初期化
+    initializeSlider();
+  }
+
+  function initializeSlider() {
+    $slider.slick({
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      speed: 2000, // トランジション時間を短縮
+      infinite: true,
+      cssEase: 'ease-in-out',
+      fade: true,
+      initialSlide: $initialSlide,
+      lazyLoad: 'ondemand', // 遅延読み込みを有効化
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            speed: 1500 // モバイルではさらに短縮
+          }
+        }
+      ]
+    });
+    $slider.css('opacity', '1');
+  }
 }
 
 function initialShowAndHideTitle() {
