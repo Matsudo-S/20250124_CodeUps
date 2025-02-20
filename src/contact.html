@@ -12,7 +12,7 @@
   <!-- ogp -->
   <meta property="og:title" content="CodeUps" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ourvoice-s/Products/codeups-diving/index.html" />
+  <meta property="og:url" content="https://ourvoice-s.com/Products/codeups-diving/index.html" />
   <meta property="og:image" content="" />
   <meta property="og:site_name" content="CodeUps" />
   <meta property="og:description" content="CodeUps" />
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
   
   <!-- JavaScript -->
-  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script defer src="./assets/js/jquery.inview.min.js"></script>
   <script defer src="./assets/js/slick.min.js"></script>
   <script defer src="./assets/js/main.js"></script>
@@ -233,16 +233,24 @@
             <div class="sub-contact__error js-email-error">*有効なメールアドレスを入力してください（例:example@domain.com）</div>
             <div class="sub-contact__error js-tel-error">*有効な電話番号を入力してください（例:000-0000-0000）</div>
             <form class="form" action="mail.php" method="post" novalidate>
+              <?php 
+                if($useToken == 1 && $confirmDsp == 1){
+                  $token = sha1(uniqid(mt_rand(), true));
+                  $_SESSION['mailform_token'] = $token;
+                  echo '<input type="hidden" name="mailform_token" value="'.$token.'" />';
+                }
+              ?>
               <dl class="form__wrap">
                 <dt class="form__label">名前<span>必須</span></dt>
                 <dd class="form__input form-input">
-                  <input type="text" name="name" placeholder="沖縄&nbsp;太郎" required maxlength="20">
+                  <input type="text" id="name" name="name" placeholder="沖縄&nbsp;太郎" required maxlength="20">
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">メールアドレス<span>必須</span></dt>
                 <dd class="form__input form-input">
                   <input type="email" 
+                        id="email"
                         name="email" 
                         placeholder="aaa000@ggmail.com" 
                         pattern="[a-zA-Z0-9._\-\+]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
@@ -254,6 +262,7 @@
                 <dt class="form__label">電話番号<span>必須</span></dt>
                 <dd class="form__input form-input">
                   <input type="tel" 
+                        id="tel"
                         name="tel" 
                         placeholder="000-0000-0000" 
                         pattern="\d{2,4}-?\d{2,4}-?\d{3,4}"
@@ -264,15 +273,15 @@
               <dl class="form__wrap">
                 <dt class="form__label">お問合せ項目<span>必須</span></dt>
                 <dd class="form__checkbox form-checkbox">
-                  <label><input type="checkbox" name="question[]" value="diving_course"><span>ダイビング講習について</span></label>
-                  <label><input type="checkbox" name="question[]" value="fun_diving"><span>ファンダイビングについて</span></label>
-                  <label><input type="checkbox" name="question[]" value="trial_diving"><span>体験ダイビングについて</span></label>
+                  <label><input type="checkbox" id="diving_course" name="question[]" value="diving_course"><span>ダイビング講習について</span></label>
+                  <label><input type="checkbox" id="fun_diving" name="question[]" value="fun_diving"><span>ファンダイビングについて</span></label>
+                  <label><input type="checkbox" id="trial_diving" name="question[]" value="trial_diving"><span>体験ダイビングについて</span></label>
                 </dd>
               </dl>
               <dl class="form__wrap">
                 <dt class="form__label">キャンペーン</dt>
                 <dd class="form__select form-select">
-                  <select name="campaign">
+                  <select id="campaign" name="campaign">
                     <option hidden>キャンペーン内容を選択</option>
                     <option value="ライセンス取得">ライセンス取得</option>
                     <option value="貸切体験ダイビング">貸切体験ダイビング</option>
@@ -284,7 +293,7 @@
               <dl class="form__wrap form__wrap--textarea">
                 <dt class="form__label">お問い合わせ内容<span>必須</span></dt>
                 <dd class="form__textarea form-textarea">
-                  <textarea name="message" required></textarea>
+                  <textarea id="message" name="message" required></textarea>
                 </dd>
               </dl>
 

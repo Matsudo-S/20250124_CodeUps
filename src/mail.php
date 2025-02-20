@@ -1,15 +1,4 @@
-<?php
-// エラーを表示する
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// POSTデータの確認
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    error_log('POST data received: ' . print_r($_POST, true));
-}
-
-header("Content-Type:text/html;charset=utf-8");
-?>
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
 <?php //error_reporting(E_ALL | E_STRICT);
 ##-----------------------------------------------------------------------------------------------------------------##
 #
@@ -40,7 +29,7 @@ if (version_compare(PHP_VERSION, '5.1.0', '>=')) {//PHP5.1.0以上の場合の�
 
 //---------------------------　必須設定　必ず設定してください　-----------------------
 
-//サイトのトップページのURL　※デフォルトでは送信完了後に「トップページへ戻る」ボタンが表示されますので
+//サイトのトップページのURL　※デフォルトでは送信完了後に「トップページへ戻る」ボタンが表示され、そのリンク先です。
 $site_top = "https://ourvoice-s.com/products/codeups-diving/index.html";
 
 //管理者のメールアドレス ※メールを受け取るメールアドレス(複数指定する場合は「,」で区切ってください 例 $to = "aa@aa.aa,bb@bb.bb";)
@@ -49,7 +38,13 @@ $to = "sower.sows.in.sterile.soil@gmail.com";
 //送信元メールアドレス（管理者宛て、及びユーザー宛メールの送信元メールアドレスです）
 //必ず実在するメールアドレスでかつ出来る限り設置先サイトのドメインと同じドメインのメールアドレスとすることを強く推奨します
 //管理者宛てメールの返信先（reply）はユーザーのメールアドレスになります。
-$from = "sower.sows.in.sterile.soil@gmail.com";
+// $from = "no-reply@ourvoice-s.com";
+$from = "guwht76452@yahoo.co.jp";
+
+//管理者宛メールの送信元（差出人）にユーザーが入力したメールアドレスを表示する(する=1, しない=0)
+//ユーザーのメールアドレスを含めることでメーラー上で管理しやすくなる機能です。
+//例 example@gmail.com <from@sample.jp>（example@gmail.comがユーザーメールアドレス、from@sample.jpが↑の$fromで設定したメールアドレスです）
+$from_add = 0;
 
 //フォームのメールアドレス入力箇所のname属性の値
 $Email = "email"; // contact.htmlのname属性と一致させる
@@ -155,7 +150,7 @@ TEXT;
 $mail_check = 1;
 
 //全角英数字→半角変換を行うかどうか。(する=1, しない=0)
-$hankaku = 0;
+$hankaku = 1;
 
 //全角英数字→半角変換を行う項目のname属性の値（name="○○"の「○○」部分）
 //※複数の場合にはカンマで区切って下さい。（上記で「1」を指定した場合のみ有効）
@@ -442,6 +437,9 @@ function postToMail($arr){
 			
 		}else{ $out = $val; }//チェックボックス（配列）追記ここまで
 		
+		if (version_compare(PHP_VERSION, '5.1.0', '<=')) {//PHP5.1.0以下の場合のみ実行（7.4でget_magic_quotes_gpcが非推奨になったため）
+			// if(get_magic_quotes_gpc()) { $out = stripslashes($out); }
+		}
 		
 		//全角→半角変換
 		if($hankaku == 1){
@@ -471,6 +469,10 @@ function confirmOutput($arr){
 			$out = rtrim($out,', ');
 			
 		}else{ $out = $val; }//チェックボックス（配列）追記ここまで
+		
+		if (version_compare(PHP_VERSION, '5.1.0', '<=')) {//PHP5.1.0以下の場合のみ実行（7.4でget_magic_quotes_gpcが非推奨になったため）
+			if(get_magic_quotes_gpc()) { $out = stripslashes($out); }
+		}
 		
 		//全角→半角変換
 		if($hankaku == 1){
@@ -523,8 +525,13 @@ function connect2val($arr){
 
 //管理者宛送信メールヘッダ
 function adminHeader($post_mail,$BccMail){
-	global $from;
-	$header="From: $from\n";
+	global $from,$from_add;
+	$header="From: ";
+	if(!empty($post_mail) && $from_add == 1){
+		$header .= mb_encode_mimeheader('"'.$post_mail.'"')." <".$from.">\n";
+	}else{
+		$header .= $from."\n";
+	}
 	if($BccMail != '') {
 	  $header.="Bcc: $BccMail\n";
 	}

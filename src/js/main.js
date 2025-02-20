@@ -1,3 +1,126 @@
+// loading animation
+jQuery(function ($) {
+
+  // トップページのパス
+  const $top_page_name = "/products/codeups-diving/index.html";
+
+  function confirm_session_storage() {
+    const $loadingContainer = $('.js-fv-loading');
+    const $header = $('.header');
+
+    console.log("confirm_session_storage() 実行");
+
+    window.addEventListener('load', function() {
+      const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+      if (!isFirstLoad) {
+        // 初回アクセス時の処理
+        initialShowAndHideTitle();
+        initFvAnimation();
+        initLoadingCompletion();
+        sessionStorage.setItem('isFirstLoad', true);
+      } else {
+        // 2回目以降の処理
+        $loadingContainer.hide();
+        $header.addClass('is-active');
+        init_fv_slider(0);
+      }
+    });
+  }
+
+  if (window.location.pathname.includes($top_page_name) || window.location.hostname.includes("localhost")) {
+    confirm_session_storage();
+  }
+
+  // fv slick slider
+  function init_fv_slider($initialSlide) {
+    const $slider = $('.js-fv-slider');
+    
+    // 先にinitイベントを登録
+    $slider.on('init', function() {
+      $slider.css('opacity', '1');
+    });
+
+    $slider.slick({
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      speed: 3000,
+      infinite: true,
+      cssEase: 'ease-in-out',
+      fade: true,
+      initialSlide: $initialSlide
+    });
+  }
+
+  function initialShowAndHideTitle() {
+    const $title = $(".js-fv-content");
+  // タイトルを同時に表示し、1秒後にヘッダーをフェードアウト
+    $title.addClass('js-visible--loading');
+
+    setTimeout(() => {
+      $title.removeClass('js-visible--loading').addClass('js-hidden');
+    }, 1500);
+  }
+
+
+  /* fv ローディングアニメーションとswiper */
+  function initFvAnimation() {
+    const $title = $(".js-fv-content");
+    // const $animationContainer = $(".js-fv-loading-container");
+    const $animationContainer = $(".js-fv-loading");
+    const $header = $(".js-top-header");
+    const $loading = $(".fv__loading");
+    const $leftImage = $('.fv__loading-image--left');
+    const $rightImage = $('.fv__loading-image--right');
+
+    $leftImage.addClass('slide-up-left');
+    $rightImage.addClass('slide-up-right');
+
+    // アニメーション完了を待ってから次の処理を実行
+    $rightImage.on('animationend', function() {
+      hideAnimationAndStartSlider($animationContainer, $header, $title, $loading);
+    });
+  }
+
+  function hideAnimationAndStartSlider($animationContainer, $header, $title, $loading) {
+    const $slider = $('.js-fv-slider');
+    $slider.css('opacity', '1');
+    
+    init_fv_slider(1);
+    // ローディングアニメーションをフェードアウト
+    $animationContainer.addClass('is-fadeout');
+    
+    // フェードアウトのトランジション時間後にスライダーをフェードイン
+    setTimeout(() => {
+      $slider.animate({
+        opacity: 1
+      }, 1000, function() {
+        $slider.slick('slickPlay');
+      });
+    }, 2000);
+  }
+
+  function initLoadingCompletion() {
+    $(document).ready(function() {
+      const header = $('.header');
+      const fvLoading = $('.fv__loading');
+      const fvTitle = $('.js-fv-content');
+
+      fvLoading.on('animationend', function() {
+        setTimeout(() => {
+          header.add(fvTitle).css({
+            transition: 'opacity 2s ease-in-out',
+            opacity: '1'
+          });
+          header.addClass('is-active');
+        });
+      });
+
+    });
+  }
+});
+
+
 // hamburger drawer
 jQuery(function ($) {
   // hamburger menu
@@ -154,175 +277,6 @@ function initSlick() {
 
 initSlick();
 });
-
-
-// loading animation
-jQuery(function ($) {
-
-function confirm_session_storage() {
-  const isFirstLoad = sessionStorage.getItem('isFirstLoad');
-  const $loadingContainer = $('.js-fv-loading');
-  const $header = $('.header');
-
-  // DOMContentLoadedを使用してパフォーマンスを改善
-  document.addEventListener('DOMContentLoaded', function() {
-    if (!isFirstLoad) {
-      initialShowAndHideTitle();
-      initFvAnimation();
-      initLoadingCompletion();
-      sessionStorage.setItem('isFirstLoad', true);
-    } else {
-      $loadingContainer.hide();
-      $header.addClass('is-active');
-      init_fv_slider(0); // スライダーを初期化
-    }
-  });
-}
-
-// fv slick slider
-function init_fv_slider($initialSlide) {
-  const $slider = $('.js-fv-slider');
-  const $sliderImages = $slider.find('img');
-  let loadedImages = 0;
-  const totalImages = $sliderImages.length;
-
-  // 画像が読み込まれていない場合は読み込みを待つ
-  if (totalImages > 0) {
-    $sliderImages.each(function() {
-      if (this.complete) {
-        loadedImages++;
-        if (loadedImages === totalImages) {
-          initializeSlider();
-        }
-      } else {
-        $(this).on('load', function() {
-          loadedImages++;
-          if (loadedImages === totalImages) {
-            initializeSlider();
-          }
-        });
-      }
-    });
-  } else {
-    // 画像がない場合は直接初期化
-    initializeSlider();
-  }
-
-  function initializeSlider() {
-    $slider.slick({
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 4000,
-      speed: 2000, // トランジション時間を短縮
-      infinite: true,
-      cssEase: 'ease-in-out',
-      fade: true,
-      initialSlide: $initialSlide,
-      lazyLoad: 'ondemand', // 遅延読み込みを有効化
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            speed: 1500 // モバイルではさらに短縮
-          }
-        }
-      ]
-    });
-    $slider.css('opacity', '1');
-  }
-}
-
-function initialShowAndHideTitle() {
-  const $title = $(".js-fv-content");
-
-// タイトルを同時に表示し、1秒後にヘッダーをフェードアウト
-  $title.addClass('js-visible--loading');
-        
-  setTimeout(() => {
-    $title.removeClass('js-visible--loading').addClass('js-hidden');
-  }, 1500);
-}
-
-
-/* fv ローディングアニメーションとswiper */
-function initFvAnimation() {
-  const $title = $(".js-fv-content");
-  // const $animationContainer = $(".js-fv-loading-container");
-  const $animationContainer = $(".js-fv-loading");
-  const $header = $(".js-top-header");
-  const $loading = $(".fv__loading");
-  const $leftImage = $('.fv__loading-image--left');
-  const $rightImage = $('.fv__loading-image--right');
-
-  // アニメーションのキーフレームを追加
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = `
-    @keyframes slideUpLeft {
-      to {
-        transform: translateY(0);
-      }
-    }
-    @keyframes slideUpRight {
-      to {
-        transform: translateY(0);
-      }
-    }
-  `;
-  document.head.appendChild(styleSheet);
-
-
-  // アニメーションを適用
-  $leftImage.css('animation', 'slideUpLeft 1.5s 1.8s forwards');
-  $rightImage.css('animation', 'slideUpRight 1.5s 2.0s forwards');
-
-  // アニメーション完了を待ってから次の処理を実行
-  $rightImage.on('animationend', function() {
-    hideAnimationAndStartSlider($animationContainer, $header, $title, $loading);
-  });
-}
-
-function hideAnimationAndStartSlider($animationContainer, $header, $title, $loading) {
-  const $slider = $('.js-fv-slider');
-  $slider.css('opacity', '1');
-  
-  init_fv_slider(1);
-
-  // ローディングアニメーションをフェードアウト
-  $animationContainer.addClass('is-fadeout');
-  
-  // フェードアウトのトランジション時間後にスライダーをフェードイン
-  setTimeout(() => {
-    $slider.animate({
-      opacity: 1
-    }, 1000, function() {
-      $slider.slick('slickPlay');
-    });
-  }, 2000);
-}
-
-function initLoadingCompletion() {
-  $(document).ready(function() {
-    const header = $('.header');
-    const fvLoading = $('.fv__loading');
-    const fvTitle = $('.js-fv-content');
-
-    fvLoading.on('animationend', function() {
-      setTimeout(() => {
-        header.add(fvTitle).css({
-          transition: 'opacity 2s ease-in-out',
-          opacity: '1'
-        });
-        header.addClass('is-active');
-      });
-    });
-
-  });
-}
-
-// 関数の実行
-confirm_session_storage(); 
-});
-
 
 
 jQuery(function ($) {
@@ -530,6 +484,7 @@ jQuery(function ($) {
     if (!$('.form__privacy input[type="checkbox"]').prop('checked')) {
       isValid = false;
       $('.form__privacy').addClass('is-error');
+      $error.addClass('is-error');
     }
 
     // バリデーション結果による処理分岐
@@ -542,7 +497,8 @@ jQuery(function ($) {
       }, 500);
       return false;
     } else {
-      window.location.href = 'contact__thanks.html';
+      // フォームを送信
+      $('form').submit();
     }
   });
 

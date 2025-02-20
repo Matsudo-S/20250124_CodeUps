@@ -69,11 +69,29 @@
   }
 }
 
-// .fv__loading.js-fv-loading {
-//   display: none;
-// }
+// animation処置について、main.jsでimage-left,rightに対して
+// addclassする際の設定
+@keyframes slideUpLeft {
+  to {
+    transform: translateY(0);
+  }
+}
 
-// ok
+@keyframes slideUpRight {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-up-left {
+  animation: slideUpLeft 1.5s 1.8s forwards;
+}
+
+.slide-up-right {
+  animation: slideUpRight 1.5s 2.0s forwards;
+}
+
+
 .fv__content {
   color: $white_pure;
   position: absolute;
@@ -115,7 +133,6 @@
   }
 }
 
-// ok
 .fv__content.js-visible--loading {
   transition: opacity 1s ease color 0.5s ease;
   opacity: 1;
@@ -152,4 +169,3 @@
   height: inherit;
   object-fit: cover;
 }
-
