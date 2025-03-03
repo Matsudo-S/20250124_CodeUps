@@ -20,7 +20,7 @@ jQuery(function ($) {
         sessionStorage.setItem('isFirstLoad', true);
       } else {
         // 2回目以降の処理
-        $loadingContainer.hide();
+        $loadingContainer.addClass('is-hidden');
         $header.addClass('is-active');
         init_fv_slider(0);
       }
@@ -497,8 +497,8 @@ jQuery(function ($) {
       }, 500);
       return false;
     } else {
-      // フォームを送信
-      $('form').submit();
+      // バリデーション成功時は自然なフォーム送信を許可
+      return true;
     }
   });
 
