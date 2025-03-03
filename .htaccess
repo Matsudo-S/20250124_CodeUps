@@ -1,8 +1,59 @@
+AuthType BASIC
 
+# パスワードファイルのパスやメッセージは変更してください。
 AuthUserFile "/home/xs986457/ourvoice-s.com/htpasswd/products/.htpasswd"
 AuthName "Member Site"
-AuthType BASIC
-require valid-user
+
+# LIGHTHOUSE環境変数を経由してUser-AgentがChrome-Lighthouseを含むか判定します。
+SetEnvIf User-Agent "Chrome-Lighthouse" LIGHTHOUSE
+
+# HTTPSリダイレクト設定
+# mod_rewrite（URLのリライト）を有効化
 RewriteEngine on
+# HTTPの場合のみ適用
 RewriteCond %{HTTPS} off
+# HTTPSへリダイレクト（301は恒久的なリダイレクト）
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Basic認証の設定
+<RequireAll>
+    Require ssl
+</RequireAll>
+
+# PageSpeed InsightsをBasic認証設定してても通るようにする
+<RequireAny>
+    # 基本認証を通過したユーザーは許可します。
+    Require valid-user
+
+    # Googleからのアクセスで、かつ、User-Agent が Chrome-Lighthouse を含む場合は許可します。
+    <RequireAll>
+      Require env LIGHTHOUSE
+      <RequireAny>
+         Require ip 108.177.8.0/21
+         Require ip 108.177.96.0/19
+         Require ip 130.211.0.0/22
+         Require ip 136.112.0.0/12
+         Require ip 172.217.0.0/19
+         Require ip 172.217.128.0/19
+         Require ip 172.217.160.0/20
+         Require ip 172.217.192.0/19
+         Require ip 172.217.224.0/19
+         Require ip 172.217.32.0/20
+         Require ip 172.253.112.0/20
+         Require ip 172.253.56.0/21
+         Require ip 173.194.0.0/16
+         Require ip 208.81.188.0/22
+         Require ip 209.85.128.0/17
+         Require ip 216.239.32.0/19
+         Require ip 216.58.192.0/19
+         Require ip 35.190.247.0/24
+         Require ip 35.191.0.0/16
+         Require ip 64.233.160.0/19
+         Require ip 66.102.0.0/20
+         Require ip 66.249.80.0/20
+         Require ip 72.14.192.0/18
+         Require ip 74.114.24.0/21
+         Require ip 74.125.0.0/16
+        </RequireAny>
+    </RequireAll>
+  </RequireAny>

@@ -20,9 +20,9 @@ jQuery(function ($) {
         sessionStorage.setItem('isFirstLoad', true);
       } else {
         // 2回目以降の処理
-        $loadingContainer.addClass('is-hidden');
         $header.addClass('is-active');
         init_fv_slider(0);
+        $loadingContainer.addClass('is-hidden');
       }
     });
   }

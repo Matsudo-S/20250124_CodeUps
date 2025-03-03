@@ -1,6 +1,29 @@
 @use "global" as *;
 
 // sub-aboutページのクラス
+.sub-about__inner {
+  position: relative;
+}
+
+.sub-about__inner::before {
+  content: "";
+  background-image: url("../images/common/common_fishes_right.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: rem(120);
+  aspect-ratio: 120 / 55;
+  position: absolute;
+  z-index: -1;
+  top: rem(-25);
+  left: calc(50% - min(48vw, 37.1rem));
+  @include mq("md") {
+    top: rem(-73);
+    width: rem(301);
+    aspect-ratio: 301 / 138;
+    left: calc(50% - min(48vw, 38.1rem));
+  }
+}
+
 .sub-page-fv__img.sub-page-fv__img--about {
   background-image: url("../images/about_fv_sp.jpg");
   @include mq("md") {
@@ -58,12 +81,35 @@
   }
 }
 
-.layout-sub-about__gallery {
+.layout-sub-about-gallery {
   margin-top: rem(40);
   @include mq("md") {
+    position: relative;
     margin-top:  rem(120);
   }
 }
+
+.layout-sub-about-gallery::before {
+  content: "";
+  position: absolute;
+  top: rem(-20);
+  // 画面幅が小さい時はrem(172)が採用され、固定値で配置
+  // 画面幅が大きい時は46vwが採用され、画面幅に応じて位置が変動
+  // 50%から引くことで、中央からの位置調整を実現
+  right: calc(50% - min(46vw, rem(172)));
+  width: rem(109);
+  aspect-ratio: 109 / 50;
+  background-image: url("../images/common/common_fishes_left.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  @include mq("md") {
+    top: rem(-40);
+    width: rem(301);
+    aspect-ratio: 301 / 138;
+    right: calc(50% - min(46.5vw, rem(671)));
+  }
+}
+
 
 .sub-about__galleries {
   margin-top: rem(40);  
@@ -76,6 +122,7 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: rem(8);
+  margin-inline: auto;
   @include mq("md") {
     grid-template-columns: repeat(7, 1fr);
     grid-auto-flow: dense;
@@ -84,9 +131,6 @@
 
 .galleries {
   width: 100%;
-  @include mq("md") {
-    min-width: rem(1130);
-  }
 }
 
 .gallery img {
