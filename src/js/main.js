@@ -10,8 +10,10 @@ jQuery(function ($) {
 
     console.log("confirm_session_storage() 実行");
 
-    window.addEventListener('load', function() {
+    try {
+      // セッションストレージの確認を即時実行
       const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+      
       if (!isFirstLoad) {
         // 初回アクセス時の処理
         initialShowAndHideTitle();
@@ -24,7 +26,12 @@ jQuery(function ($) {
         init_fv_slider(0);
         $loadingContainer.addClass('is-hidden');
       }
-    });
+    } catch (error) {
+      console.error('Session storage error:', error);
+      // エラー時はローディングを非表示にして表示を確保
+      $loadingContainer.addClass('is-hidden');
+      $header.addClass('is-active');
+    }
   }
 
   if (window.location.pathname.includes($top_page_name) || window.location.hostname.includes("localhost")) {
@@ -432,8 +439,7 @@ jQuery(function ($) {
    * お問い合わせフォームのバリデーション処理
    */
   $('.form-submit button').on('click', function(e) {
-    e.preventDefault();
-    
+    const $form = $(this).closest('form');
     let isValid = true;
     const $error = $('.js-error');
     const $emailError = $('.js-email-error');
@@ -489,16 +495,14 @@ jQuery(function ($) {
 
     // バリデーション結果による処理分岐
     if (!isValid) {
-      e.stopPropagation();
-      // エラーメッセージまでスクロール（最も上にある表示中のエラーメッセージへ）
+      e.preventDefault(); // エラーがある場合のみ送信を停止
+      // エラーメッセージまでスクロール
       const $firstError = $('.sub-contact__error.is-error').first();
-      $('html, body').animate({
-        scrollTop: $firstError.offset().top - 20
-      }, 500);
-      return false;
-    } else {
-      // バリデーション成功時は自然なフォーム送信を許可
-      return true;
+      if ($firstError.length) {
+        $('html, body').animate({
+          scrollTop: $firstError.offset().top - 20
+        }, 500);
+      }
     }
   });
 
