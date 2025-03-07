@@ -21,6 +21,10 @@ header.sub-page__header {
   visibility: visible;
 }
 
+.header.is-static {
+  position: static;
+}
+
 .layout-header {
   position: fixed;
   z-index: 900;

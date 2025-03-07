@@ -1,7 +1,7 @@
 @use "global" as *;
 
 // 404ページ専用の背景色とテキスト色
-.body--sub-404 {
+.body-sub-404 {
   background-color: $main-accent-color;
   color: $white_pure;
 }

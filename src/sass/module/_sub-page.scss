@@ -2,40 +2,6 @@
 
 // sub-blogページのクラス
 // 下層ページ共通のクラス
-.sub-page__inner {
-  position: relative;
-  // min-width: rem(375);
-  // @include mq(md){
-  //     max-width: rem(1130);
-  // }
-}
-
-.sub-page__inner::before {
-  content: "";
-  background-image: url("../images/common/common_fishes_right.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: rem(120);
-  aspect-ratio: 120 / 55;
-  position: absolute;
-  z-index: -1;
-  top: rem(-25);
-  left: calc(50% - min(48vw, 37.1rem));
-  @include mq("md") {
-    top: rem(-73);
-    width: rem(301);
-    aspect-ratio: 301 / 138;
-    left: calc(50% - min(48vw, 38.1rem));
-  }
-}
-
-.sub-page-contact.layout-contact {
-  margin-top: rem(80);
-  @include mq("md") {
-    margin-top: rem(100);
-  }
-}
-
 .sub-page-fv {
   width: 100%;
 }
@@ -68,6 +34,37 @@
 
 .sub-page-fv__title::first-letter {
   text-transform: uppercase;
+}
+
+
+.sub-page__inner {
+  position: relative;
+}
+
+.sub-page__inner::before {
+  content: "";
+  background-image: url("../images/common/common_fishes_right.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: rem(120);
+  aspect-ratio: 120 / 55;
+  position: absolute;
+  z-index: -1;
+  top: rem(-25);
+  left: calc(50% - min(48vw, 37.1rem));
+  @include mq("md") {
+    top: rem(-73);
+    width: rem(301);
+    aspect-ratio: 301 / 138;
+    left: calc(50% - min(48vw, 38.1rem));
+  }
+}
+
+.sub-page-contact.layout-contact {
+  margin-top: rem(80);
+  @include mq("md") {
+    margin-top: rem(100);
+  }
 }
 
 .sub-page-texts__title {
